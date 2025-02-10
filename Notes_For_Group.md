@@ -1,8 +1,8 @@
 ## Goal to change features:
-1. Filter pill boxes
-2. Organize sections
-3. Home view
-4. Menu bar
+1. Filter pill boxes - Logan (?)
+2. Organize sections - Jack
+3. Home view - Mali 
+4. Menu bar - Alex
 
 ## Proposed Changes:
 - **Change 1:** Description of change 1
