@@ -119,11 +119,7 @@ export default function CourseSearch() {
 
       {/* Main Content */}
       <div style={{ flex: 1 }}>
-        {/* Header */}
-        <header style={{ backgroundColor: "#002E5D", padding: "20px", borderRadius: "8px", marginBottom: "20px" }}>
-          <h1 style={{ color: "#fff", fontSize: "24px", fontWeight: "bold", margin: 0 }}>Explore BYU Courses</h1>
-        </header>
-
+        
         {/* Search Bar */}
         <input
           type="text"
