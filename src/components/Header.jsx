@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   const headerStyle = {
@@ -38,19 +39,19 @@ const Header = () => {
       <nav>
         <ul style={navStyle}>
           <li style={navItemStyle}>
-            <a href="/" style={linkStyle}>Home</a>
+            <Link to="/" style={linkStyle}>Home</Link>
           </li>
           <li style={navItemStyle}>
-            <a href="/general-education" style={linkStyle}>General Education</a>
+            <Link to="/general-education" style={linkStyle}>General Education</Link>
           </li>
           <li style={navItemStyle}>
-            <a href="/policy" style={linkStyle}>Policy</a>
+            <Link to="/policy" style={linkStyle}>Policy</Link>
           </li>
           <li style={navItemStyle}>
-            <a href="/about-byu" style={linkStyle}>About BYU</a>
+            <Link to="/about-byu" style={linkStyle}>About BYU</Link>
           </li>
           <li style={navItemStyle}>
-            <a href="/faq" style={linkStyle}>F&amp;Q</a>
+            <Link to="/faq" style={linkStyle}>F&amp;Q</Link>
           </li>
         </ul>
       </nav>
