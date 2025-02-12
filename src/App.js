@@ -13,7 +13,11 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<CourseSearch />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/search" element={<CourseSearch/>}/>
+        <Route path="/general-education" element={<GeneralEducation />} />
+        <Route path="/policy" element={<Policy />} />
+        <Route path="/about-byu" element={<AboutBYU />} />
         <Route path="/faq" element={<FAQ />} />
         {/* 
           Optionally, add routes for "General Education", "Policy", "About BYU", etc.

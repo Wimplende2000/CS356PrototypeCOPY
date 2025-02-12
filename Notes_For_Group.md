@@ -34,7 +34,9 @@
 
 - **Date:** 2025-02-12
   - **Discussion:** 
-     
+     - add sorting features
+        * alphabetically
+        * course number
   - **Decision:** Summary of the decision made
 
 
