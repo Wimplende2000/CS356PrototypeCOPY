@@ -39,7 +39,16 @@
         * course number
   - **Decision:** Summary of the decision made
 
+--filter pill boxes--
+--sort functionality--alphabetically, course number, course level, 
+code name
+subject code 
+department 
+course code
+career
 
+--sort button can to the right of search bar
+--making sure the search functionality extends to more class object attributes
 - **Date:** YYYY-MM-DD
   - **Discussion:** Summary of what was discussed
   - **Decision:** Summary of the decision made
