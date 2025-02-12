@@ -157,23 +157,6 @@ export default function CourseSearch() {
             <p style={{ textAlign: "center", color: "#777", fontSize: "14px" }}>No courses found.</p>
           )}
         </div>
-
-        {/* Student FAQ Section */}
-        <div style={{ marginTop: "40px", padding: "20px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)" }}>
-          <h2 style={{ color: "#002E5D", fontSize: "20px", fontWeight: "bold", marginBottom: "15px" }}>Student FAQ</h2>
-          <div style={{ marginBottom: "15px" }}>
-            <h3 style={{ color: "#002E5D", fontSize: "16px", fontWeight: "bold" }}>Waitlist Policies</h3>
-            <p style={{ color: "#555", fontSize: "14px" }}>If a course is full, you can join the waitlist. You will be automatically enrolled if a seat becomes available.</p>
-          </div>
-          <div style={{ marginBottom: "15px" }}>
-            <h3 style={{ color: "#002E5D", fontSize: "16px", fontWeight: "bold" }}>Registration Deadlines</h3>
-            <p style={{ color: "#555", fontSize: "14px" }}>Registration deadlines vary by semester. Check the academic calendar for specific dates.</p>
-          </div>
-          <div>
-            <h3 style={{ color: "#002E5D", fontSize: "16px", fontWeight: "bold" }}>Grading Criteria</h3>
-            <p style={{ color: "#555", fontSize: "14px" }}>Grading policies are outlined in the course syllabus. Contact the instructor for clarification.</p>
-          </div>
-        </div>
       </div>
     </div>
   );
