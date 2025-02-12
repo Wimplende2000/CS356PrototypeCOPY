@@ -39,16 +39,26 @@
         * course number
   - **Decision:** Summary of the decision made
 
---filter pill boxes--
---sort functionality--alphabetically, course number, course level, 
-code name
-subject code 
-department 
-course code
-career
+# Course Filtering & Sorting Features
 
---sort button can to the right of search bar
---making sure the search functionality extends to more class object attributes
+## Filter Options
+- **Pill Boxes**: Implement filter pill boxes for easy selection and removal of filters.
+
+## Sorting Functionality
+Sorting should be available based on the following criteria:
+- **Alphabetically**
+- **Course Number**
+- **Course Level**
+- **Code Name**
+- **Subject Code**
+- **Department**
+- **Course Code**
+- **Career**
+
+## UI Adjustments
+- **Sort Button Placement**: Move the sort button to the right of the search bar.
+- **Enhanced Search Functionality**: Ensure the search function extends to more class object attributes for comprehensive results.
+
 - **Date:** YYYY-MM-DD
   - **Discussion:** Summary of what was discussed
   - **Decision:** Summary of the decision made
