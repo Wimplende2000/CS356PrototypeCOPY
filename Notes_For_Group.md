@@ -29,36 +29,25 @@
       If you click department it will bring up classes from that department
 
 
-  - **Decision:** 
-
-
-- **Date:** 2025-02-12
+### Date: 2025-02-12
   - **Discussion:** 
-     - add sorting features
-        * alphabetically
-        * course number
-  - **Decision:** Summary of the decision made
+#### Course Filtering & Sorting Features
+  * alphabetically
+  * course number
+  * course level
+  * ^other options^
+  ** department
+  ** career path
+  **
+#### Pill box sorting
+  * implement pill boxes for easy selection and removal of filters
+  * 
+#### UI Adjustments
+  * Sort button placement
+  ** Move the sort button to the right of the searchbar
+  * Enhanced Search Functionality
+  ** Ensure that search works with professor name and course code, as well as the course title
 
-# Course Filtering & Sorting Features
-
-## Filter Options
-- **Pill Boxes**: Implement filter pill boxes for easy selection and removal of filters.
-
-## Sorting Functionality
-Sorting should be available based on the following criteria:
-- **Alphabetically**
-- **Course Number**
-- **Course Level**
-- **Code Name**
-- **Subject Code**
-- **Department**
-- **Course Code**
-- **Career**
-
-## UI Adjustments
-- **Sort Button Placement**: Move the sort button to the right of the search bar.
-- **Enhanced Search Functionality**: Ensure the search function extends to more class object attributes for comprehensive results.
-
-- **Date:** YYYY-MM-DD
+### Date: YYYY-MM-DD
   - **Discussion:** Summary of what was discussed
   - **Decision:** Summary of the decision made
