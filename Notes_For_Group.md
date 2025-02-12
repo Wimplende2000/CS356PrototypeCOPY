@@ -19,7 +19,8 @@
   Home view
   Separate the FAQ into a separate page, access by the menu bar
   Compress the information on the card - keep all the information you can filter by
-      get rid of grading policy. Specific section information should go in the section sidebar
+      - Get rid of grading policy. Specific section information should go in the section sidebar
+
   Filters: Do we want to do a dropdown of checkboxes
   We can have a dropdown of colleges and then it will have checkboxes for departments
   
@@ -29,6 +30,13 @@
 
 
   - **Decision:** 
+
+
+- **Date:** 2025-02-12
+  - **Discussion:** 
+     
+  - **Decision:** Summary of the decision made
+
 
 - **Date:** YYYY-MM-DD
   - **Discussion:** Summary of what was discussed
