@@ -1,18 +1,20 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import Header from './components/Header';
+import Header from './components/header/Header';
 import CourseSearch from './components/CourseSearch';
 import Home from './components/Home';
-import FAQ from './components/FAQ';
+import FAQ from './components/header/FAQ';
+import GeneralEducation from './components/header/GeneralEducation';
+import Policy from './components/header/Policy';
+import AboutBYU from './components/header/AboutBYU';
 
 function App() {
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<CourseSearch />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/search" element = {<CourseSearch />} />
         {/* 
           Optionally, add routes for "General Education", "Policy", "About BYU", etc.
           For example:
