@@ -48,6 +48,17 @@
   * Enhanced Search Functionality
   ** Ensure that search works with professor name and course code, as well as the course title
 
-### Date: YYYY-MM-DD
+### Date: 2025-02-14
+  - **Discussion:** 
+#### Check-ins
+  - make sure sidebar is done
+  - merge Logan's changes (sort and search)
+  - finish filling out other pages (just give more info, maybe some pictures, etc)
+  - look at the filter dropdown again (college dropdown, department checkboxes)
+  - turn modality into checkboxes as well (more likely to need multiple)
+  - **Decision:** Summary of the decision made
+
+
+### Date: 2025-02-
   - **Discussion:** Summary of what was discussed
   - **Decision:** Summary of the decision made
