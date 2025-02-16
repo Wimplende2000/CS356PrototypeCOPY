@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import SidebarFilters from "./SidebarFilters";
 import SearchBar from "./SearchBar";
+
 const courses = [
   { title: "Introduction to Computer Science", code: "CS101", modality: "Online", hasLab: true, prerequisites: [], semester: "Fall 2023", department: "CS", degreeRequirement: "Major Requirement", instructor: "Dr. Smith", officeHours: "Mon 2-4 PM", syllabus: "syllabus.pdf", textbook: "Introduction to CS", gradingPolicy: "Standard" },
   { title: "How to Program", code: "CS110", modality: "In-Person", hasLab: true, prerequisites: [], semester: "Varies", department: "CS", degreeRequirement: "Major Requirement", instructor: "Prof. Anderson", officeHours: "Tue/Thu 10-11 AM", textbook: "Programming Fundamentals", gradingPolicy: "Weighted" },
@@ -94,10 +95,12 @@ export default function CourseSearch() {
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("");
-  const [sortOption, setSortOption] = useState("title");
+  const [sortOption, setSortOption] = useState("title"); // State for sorting
 
+  // Filtering logic
   const filteredCourses = courses.filter(course =>
-    (search === "" || course.title.toLowerCase().includes(search.toLowerCase())) &&
+    (search === "" || course.title.toLowerCase().includes(search.toLowerCase())||
+    course.code.toLowerCase().includes(search.toLowerCase())||course.department.toLowerCase().includes(search.toLowerCase())) &&
     (selectedModality === "" || course.modality === selectedModality) &&
     (!showLabCourses || course.hasLab) &&
     (!showNoPrerequisites || course.prerequisites.length === 0) &&
@@ -106,13 +109,14 @@ export default function CourseSearch() {
     (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement)
   );
 
+  // Sorting logic
   const sortedCourses = [...filteredCourses].sort((a, b) => {
     if (sortOption === "title") {
       return a.title.localeCompare(b.title);
-    } else if (sortOption === "code") {
-      return a.code.localeCompare(b.code);
-    } else if (sortOption === "instructor") {
-      return a.instructor.localeCompare(b.instructor);
+    } else if (sortOption === "semester") {
+      return a.semester.localeCompare(b.semester);
+    } else if (sortOption === "department") {
+      return a.department.localeCompare(b.department);
     }
     return 0;
   });
@@ -141,7 +145,8 @@ export default function CourseSearch() {
       <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
         <SearchBar onSearch={setSearch} />
 
-        <div style={{ display: "flex", justifyContent: "end", alignItems:"center", marginBottom: "10px" }}>
+        {/* Sorting Row */}
+        <div style={{ display: "flex", justifyContent: "end",align:"center", marginBottom: "10px" }}>
           <label style={{ marginRight: "10px", fontSize: "14px", color: "#555" }}>Sort by:</label>
           <select
             value={sortOption}
@@ -149,11 +154,12 @@ export default function CourseSearch() {
             style={{ padding: "5px", borderRadius: "4px", border: "1px solid #ccc" }}
           >
             <option value="title">Title</option>
-            <option value="code">Course Code</option>
-            <option value="instructor">Instructor</option>
+            <option value="semester">Semester</option>
+            <option value="department">Department</option>
           </select>
         </div>
 
+        {/* Course Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
           {sortedCourses.length > 0 ? (
             sortedCourses.map((course, index) => (
@@ -161,10 +167,17 @@ export default function CourseSearch() {
                 <p style={{ fontSize: "12px", color: "#777", marginBottom: "5px" }}>{course.modality}</p>
                 <h2 style={{ fontSize: "16px", margin: "5px 0", color: "#002E5D", fontWeight: "bold" }}>{course.title}</h2>
                 <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>{course.code}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.instructor}</p>
+                {course.hasLab && <p style={{ color: "red", fontSize: "12px", marginBottom: "5px" }}>Lab Required</p>}
+                {course.prerequisites.length > 0 && (
+                  <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>
+                    Prerequisites: {course.prerequisites.join(", ")}
+                  </p>
+                )}
                 <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.semester}</p>
                 <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.department}</p>
                 <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Degree Requirement: {course.degreeRequirement}</p>
+                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Instructor: {course.instructor}</p>
+                <a href={course.syllabus} style={{ color: "#002E5D", fontSize: "12px", textDecoration: "none" }}>Download Syllabus</a>
               </div>
             ))
           ) : (

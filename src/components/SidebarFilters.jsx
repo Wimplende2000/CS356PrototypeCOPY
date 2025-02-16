@@ -95,9 +95,13 @@ export default function SidebarFilters({
           value={selectedSemester}
           onChange={(e) => setSelectedSemester(e.target.value)}
         >
-          <option value="All">All Semesters</option>
-          <option value="Fall 2023">Fall 2023</option>
-          <option value="Spring 2024">Spring 2024</option>
+<option value="Fall 2023">Fall 2023</option>
+<option value="Fall 2024">Fall 2024</option>
+<option value="Fall/Winter">Fall/Winter</option>
+<option value="Spring 2024">Spring 2024</option>
+<option value="Spring 2025">Spring 2025</option>
+<option value="Winter 2024">Winter 2024</option>
+<option value="Winter 2025">Winter 2025</option>
         </select>
       </div>
 
