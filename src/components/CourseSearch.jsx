@@ -1,10 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
-import Fuse from "fuse.js";
 import SidebarFilters from "./SidebarFilters";
 import SearchBar from "./SearchBar";
-import SortCourses from "./SortCourses";
-
 const courses = [
   { title: "Introduction to Computer Science", code: "CS101", modality: "Online", hasLab: true, prerequisites: [], semester: "Fall 2023", department: "CS", degreeRequirement: "Major Requirement", instructor: "Dr. Smith", officeHours: "Mon 2-4 PM", syllabus: "syllabus.pdf", textbook: "Introduction to CS", gradingPolicy: "Standard" },
   { title: "How to Program", code: "CS110", modality: "In-Person", hasLab: true, prerequisites: [], semester: "Varies", department: "CS", degreeRequirement: "Major Requirement", instructor: "Prof. Anderson", officeHours: "Tue/Thu 10-11 AM", textbook: "Programming Fundamentals", gradingPolicy: "Weighted" },
@@ -87,91 +84,87 @@ const courses = [
   { title: "Quantum Information Science", code: "CS576", modality: "In-Person", hasLab: false, prerequisites: ["Linear Algebra", "Discrete Math", "Probability"], semester: "Spring 2025", department: "CS", degreeRequirement: "Graduate Elective", instructor: "Dr. Alistair Scott", officeHours: "Mondays & Wednesdays 10-11 AM", syllabus: "quantum_info_spring2025_syllabus.pdf", textbook: "Quantum Computation and Quantum Information", gradingPolicy: "Problem Sets & Exams" }
 ];
 
-const fuse = new Fuse(courses, {
-  keys: [
-    { name: "title", weight: 0.6 },
-    { name: "code", weight: 0.4 },
-    { name: "instructor", weight: 0.2 }
-  ],
-  threshold: 0.3,
-  distance: 100,
-  ignoreLocation: true
-});
-
 export default function CourseSearch() {
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
-
   const [search, setSearch] = useState(query);
-  const [sortKey, setSortKey] = useState("");
-  const [sortOrder, setSortOrder] = useState("asc");
-  const [filteredCourses, setFilteredCourses] = useState(courses);
+  const [selectedModality, setSelectedModality] = useState("");
+  const [showLabCourses, setShowLabCourses] = useState(false);
+  const [showNoPrerequisites, setShowNoPrerequisites] = useState(false);
+  const [selectedSemester, setSelectedSemester] = useState("");
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("");
+  const [sortOption, setSortOption] = useState("title");
+
+  const filteredCourses = courses.filter(course =>
+    (search === "" || course.title.toLowerCase().includes(search.toLowerCase())) &&
+    (selectedModality === "" || course.modality === selectedModality) &&
+    (!showLabCourses || course.hasLab) &&
+    (!showNoPrerequisites || course.prerequisites.length === 0) &&
+    (selectedSemester === "" || course.semester === selectedSemester) &&
+    (selectedDepartment === "" || course.department === selectedDepartment) &&
+    (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement)
+  );
+
+  const sortedCourses = [...filteredCourses].sort((a, b) => {
+    if (sortOption === "title") {
+      return a.title.localeCompare(b.title);
+    } else if (sortOption === "code") {
+      return a.code.localeCompare(b.code);
+    } else if (sortOption === "instructor") {
+      return a.instructor.localeCompare(b.instructor);
+    }
+    return 0;
+  });
 
   useEffect(() => {
-    let results = [];
-
-    if (/^\d+$/.test(search.trim())) {
-      results = courses.filter((course) => course.code.includes(search.trim()));
-    } else {
-      results = search ? fuse.search(search).map((result) => result.item) : courses;
-    }
-
-    if (sortKey) {
-      results = [...results].sort((a, b) => {
-        if (a[sortKey] < b[sortKey]) return sortOrder === "asc" ? -1 : 1;
-        if (a[sortKey] > b[sortKey]) return sortOrder === "asc" ? 1 : -1;
-        return 0;
-      });
-    }
-
-    setFilteredCourses(results);
-  }, [search, sortKey, sortOrder]);
+    console.log("Fetching results for:", { query, selectedModality, selectedSemester });
+  }, [query, selectedModality, selectedSemester, selectedDepartment, selectedDegreeRequirement, showLabCourses, showNoPrerequisites]);
 
   return (
     <div style={{ display: "flex", gap: "20px", padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <SidebarFilters />
+      <SidebarFilters
+        selectedModality={selectedModality}
+        setSelectedModality={setSelectedModality}
+        selectedSemester={selectedSemester}
+        setSelectedSemester={setSelectedSemester}
+        selectedDepartment={selectedDepartment}
+        setSelectedDepartment={setSelectedDepartment}
+        selectedDegreeRequirement={selectedDegreeRequirement}
+        setSelectedDegreeRequirement={setSelectedDegreeRequirement}
+        showLabCourses={showLabCourses}
+        setShowLabCourses={setShowLabCourses}
+        showNoPrerequisites={showNoPrerequisites}
+        setShowNoPrerequisites={setShowNoPrerequisites}
+      />
 
       <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
-        
-        {/* 🚀 SearchBar & SortCourses in a row */}
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "15px" }}>
-          <SearchBar onSearch={setSearch} />
-          <SortCourses onSort={(key, order) => {
-            setSortKey(key);
-            setSortOrder(order);
-          }} />
+        <SearchBar onSearch={setSearch} />
+
+        <div style={{ display: "flex", justifyContent: "end", alignItems:"center", marginBottom: "10px" }}>
+          <label style={{ marginRight: "10px", fontSize: "14px", color: "#555" }}>Sort by:</label>
+          <select
+            value={sortOption}
+            onChange={(e) => setSortOption(e.target.value)}
+            style={{ padding: "5px", borderRadius: "4px", border: "1px solid #ccc" }}
+          >
+            <option value="title">Title</option>
+            <option value="code">Course Code</option>
+            <option value="instructor">Instructor</option>
+          </select>
         </div>
 
-        {/* Course Grid */}
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))", gap: "20px", marginTop: "10px" }}>
-          {filteredCourses.length > 0 ? (
-            filteredCourses.map((course, index) => (
+        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
+          {sortedCourses.length > 0 ? (
+            sortedCourses.map((course, index) => (
               <div key={index} style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)" }}>
-                <h2 style={{ fontSize: "16px", marginBottom: "5px", color: "#002E5D", fontWeight: "bold" }}>{course.title}</h2>
-                <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>Course Code: {course.code}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Instructor: {course.instructor}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Semester: {course.semester}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Modality: {course.modality}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Department: {course.department}</p>
+                <p style={{ fontSize: "12px", color: "#777", marginBottom: "5px" }}>{course.modality}</p>
+                <h2 style={{ fontSize: "16px", margin: "5px 0", color: "#002E5D", fontWeight: "bold" }}>{course.title}</h2>
+                <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>{course.code}</p>
+                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.instructor}</p>
+                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.semester}</p>
+                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.department}</p>
                 <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Degree Requirement: {course.degreeRequirement}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Office Hours: {course.officeHours}</p>
-                
-                {course.hasLab && <p style={{ color: "red", fontSize: "12px", marginBottom: "5px" }}>Lab Required</p>}
-                
-                {course.prerequisites.length > 0 && (
-                  <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>
-                    Prerequisites: {course.prerequisites.join(", ")}
-                  </p>
-                )}
-
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Textbook: {course.textbook}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Grading Policy: {course.gradingPolicy}</p>
-
-                {course.syllabus && (
-                  <a href={course.syllabus} style={{ color: "#002E5D", fontSize: "12px", textDecoration: "none" }} target="_blank" rel="noopener noreferrer">
-                    📄 View Syllabus
-                  </a>
-                )}
               </div>
             ))
           ) : (

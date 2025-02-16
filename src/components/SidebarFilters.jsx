@@ -15,33 +15,21 @@ export default function SidebarFilters({
   showNoPrerequisites,
   setShowNoPrerequisites
 }) {
-  // Ref to track if the component has mounted
-  const hasMounted = useRef(false);
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Skip effect on initial mount
-    if (!hasMounted.current) {
-      hasMounted.current = true;
-      return;
-    }
-
-    // Check if any filter is selected (i.e., not "All")
     if (
-        selectedModality !== "All" ||
-        selectedSemester !== "All" ||
-        selectedDepartment !== "All" ||
-        selectedDegreeRequirement !== "All" ||
-        showLabCourses ||
-        showNoPrerequisites
-      ) {
-        // Only navigate to search when a valid filter is selected
-        navigate("/search");
-      } else {
-        // Optionally, if filters are reset, you can navigate back to the home page
-        navigate("/");
-      }
+      selectedModality !== "All" ||
+      selectedSemester !== "All" ||
+      selectedDepartment !== "All" ||
+      selectedDegreeRequirement !== "All" ||
+      showLabCourses ||
+      showNoPrerequisites
+    ) {
+      navigate("/search");
+    } else {
+      navigate("/");
+    }
   }, [
     selectedModality,
     selectedSemester,
@@ -52,7 +40,6 @@ export default function SidebarFilters({
     navigate
   ]);
 
-  // Save filter values to localStorage whenever they change
   useEffect(() => {
     localStorage.setItem(
       "sidebarFilters",
@@ -74,11 +61,19 @@ export default function SidebarFilters({
     showNoPrerequisites
   ]);
 
+  const handleReset = () => {
+    setSelectedModality("All");
+    setSelectedSemester("All");
+    setSelectedDepartment("All");
+    setSelectedDegreeRequirement("All");
+    setShowLabCourses(false);
+    setShowNoPrerequisites(false);
+  };
+
   return (
     <div style={{ width: "250px", padding: "20px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)" }}>
       <h3 style={{ marginBottom: "20px", color: "#002E5D", fontSize: "18px", fontWeight: "bold" }}>Filters</h3>
 
-      {/* Modality Filter */}
       <div style={{ marginBottom: "15px" }}>
         <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Modality</label>
         <select
@@ -93,7 +88,6 @@ export default function SidebarFilters({
         </select>
       </div>
 
-      {/* Semester Filter */}
       <div style={{ marginBottom: "15px" }}>
         <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Semester</label>
         <select
@@ -107,7 +101,6 @@ export default function SidebarFilters({
         </select>
       </div>
 
-      {/* Department Filter */}
       <div style={{ marginBottom: "15px" }}>
         <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Department</label>
         <select
@@ -122,7 +115,6 @@ export default function SidebarFilters({
         </select>
       </div>
 
-      {/* Degree Requirement Filter */}
       <div style={{ marginBottom: "15px" }}>
         <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Degree Requirement</label>
         <select
@@ -137,7 +129,6 @@ export default function SidebarFilters({
         </select>
       </div>
 
-      {/* Lab Hours Filter */}
       <div style={{ marginBottom: "15px" }}>
         <input
           type="checkbox"
@@ -148,8 +139,7 @@ export default function SidebarFilters({
         <label style={{ color: "#555", fontSize: "14px" }}>Lab Hours Required</label>
       </div>
 
-      {/* No Prerequisites Filter */}
-      <div>
+      <div style={{ marginBottom: "20px" }}>
         <input
           type="checkbox"
           checked={showNoPrerequisites}
@@ -158,6 +148,14 @@ export default function SidebarFilters({
         />
         <label style={{ color: "#555", fontSize: "14px" }}>No Prerequisites</label>
       </div>
+
+      {/* Reset Button */}
+      <button
+        onClick={handleReset}
+        style={{ width: "100%", padding: "10px", backgroundColor: "#d9534f", color: "white", border: "none", borderRadius: "4px", cursor: "pointer", fontSize: "14px" }}
+      >
+        Reset Filters
+      </button>
     </div>
   );
 }
