@@ -113,9 +113,16 @@ export default function CourseSearch() {
   const sortedCourses = [...filteredCourses].sort((a, b) => {
     if (sortOption === "title") {
       return a.title.localeCompare(b.title);
-    } else if (sortOption === "semester") {
+    } 
+    
+    else if (sortOption === "semester") {
       return a.semester.localeCompare(b.semester);
-    } else if (sortOption === "department") {
+    } 
+    else if (sortOption === "code") {
+      return a.semester.localeCompare(b.code);
+    } 
+    
+    else if (sortOption === "department") {
       return a.department.localeCompare(b.department);
     }
     return 0;
@@ -155,6 +162,7 @@ export default function CourseSearch() {
           >
             <option value="title">Title</option>
             <option value="semester">Semester</option>
+            <option value="code">Code</option>
             <option value="department">Department</option>
           </select>
         </div>
