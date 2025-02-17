@@ -1,24 +1,26 @@
 import { useState } from "react";
-import { FaSort, FaSortUp, FaSortDown } from "react-icons/fa"; // Install with `npm install react-icons`
+import { FaSortUp, FaSortDown } from "react-icons/fa"; 
+import { useCourseDataContext } from "../contextsGLOBAL/courseDataContext"; 
 
-export default function SortCourses({ onSort }) {
-  const [sortKey, setSortKey] = useState(""); 
-  const [sortOrder, setSortOrder] = useState("asc"); // "asc" or "desc"
+export default function SortCourses({ onSortChange }) { // Accept onSortChange prop
+  const [sortKey, setSortKey] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc"); 
+  const { filteredList, setFilteredList } = useCourseDataContext(); 
 
   const handleSortChange = (event) => {
     const key = event.target.value;
     setSortKey(key);
-    onSort(key, sortOrder);
+    onSortChange(key, sortOrder); // Notify parent
   };
 
   const toggleSortOrder = () => {
     const newOrder = sortOrder === "asc" ? "desc" : "asc";
     setSortOrder(newOrder);
-    onSort(sortKey, newOrder);
+    onSortChange(sortKey, newOrder); // Notify parent
   };
 
   return (
-    <div className="flex items-center gap-3 p-3 bg-white shadow-md rounded-md">
+    <div style={{ display: "flex", justifyContent: "end", alignItems: "center", marginBottom: "10px" }}>
       <label className="text-gray-700 font-medium">Sort by:</label>
       <select
         value={sortKey}
