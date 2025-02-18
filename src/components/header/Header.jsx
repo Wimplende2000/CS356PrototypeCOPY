@@ -1,4 +1,3 @@
-// src/components/Header.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
 
@@ -36,7 +35,12 @@ const Header = () => {
 
   return (
     <header style={headerStyle}>
-      <div style={titleStyle}>Explore BYU Courses</div>
+      {/* Wrap the title in a Link so it's clickable */}
+      <div style={titleStyle}>
+        <Link to="/" style={{ color: '#fff', textDecoration: 'none' }}>
+          Explore BYU Courses
+        </Link>
+      </div>
       <nav>
         <ul style={navStyle}>
           <li style={navItemStyle}>
