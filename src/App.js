@@ -8,6 +8,8 @@ import GeneralEducation from './components/header/GeneralEducation';
 import Policy from './components/header/Policy';
 import AboutBYU from './components/header/AboutBYU';
 import Footer from './components/footer/Footer'; // Import your Footer component
+import Privacy from './components/footer/Privacy';
+import CookiePreferences from './components/footer/CookiePreferences';
 
 function App() {
   return (
@@ -20,6 +22,8 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/about-byu" element={<AboutBYU />} />
         <Route path="/faq" element={<FAQ />} />
+        <Route path="/privacy" element={<Privacy />} /> {/* Add the Privacy route */}
+        <Route path="/cookie-preferences" element={<CookiePreferences />} />
       </Routes>
       <Footer /> {/* This footer will appear on every page */}
     </Router>
