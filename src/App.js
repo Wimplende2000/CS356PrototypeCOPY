@@ -7,6 +7,7 @@ import FAQ from './components/header/FAQ';
 import GeneralEducation from './components/header/GeneralEducation';
 import Policy from './components/header/Policy';
 import AboutBYU from './components/header/AboutBYU';
+import Footer from './components/footer/Footer'; // Import your Footer component
 
 function App() {
   return (
@@ -14,17 +15,13 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/search" element={<CourseSearch/>}/>
+        <Route path="/search" element={<CourseSearch />} />
         <Route path="/general-education" element={<GeneralEducation />} />
         <Route path="/policy" element={<Policy />} />
         <Route path="/about-byu" element={<AboutBYU />} />
         <Route path="/faq" element={<FAQ />} />
-        {/* 
-          Optionally, add routes for "General Education", "Policy", "About BYU", etc.
-          For example:
-          <Route path="/general-education" element={<GeneralEducation />} />
-        */}
       </Routes>
+      <Footer /> {/* This footer will appear on every page */}
     </Router>
   );
 }
