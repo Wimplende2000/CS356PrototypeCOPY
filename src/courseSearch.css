@@ -1,0 +1,4 @@
+.course-box:hover {
+    text-decoration: underline;
+    text-decoration-color: rgb(137, 137, 161);
+  }

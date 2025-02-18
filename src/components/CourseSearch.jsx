@@ -5,6 +5,7 @@ import SidebarFilters from "./SidebarFilters";
 import SearchBar from "./SearchBar";
 import { useCourseDataContext } from "../contextsGLOBAL/courseDataContext";
 import courseData from "../contextsGLOBAL/courseData";
+import "../courseSearch.css";
 
 export default function CourseSearch() {
   const { filteredList, setFilteredList } = useCourseDataContext();
@@ -114,8 +115,9 @@ export default function CourseSearch() {
           {filteredList.length > 0 ? (
             filteredList.map((course, index) => (
               <div key={index} 
-                   style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)" }}
-                   onClick={() => openSidePanel(course.code)} // Open the panel on course click
+                className="course-box"
+                style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"}}
+                onClick={() => openSidePanel(course.code)} // Open the panel on course click
               >
                 <p style={{ fontSize: "12px", color: "#777", marginBottom: "5px" }}>{course.modality}</p>
                 <h2 style={{ fontSize: "16px", margin: "5px 0", color: "#002E5D", fontWeight: "bold" }}>{course.title}</h2>
