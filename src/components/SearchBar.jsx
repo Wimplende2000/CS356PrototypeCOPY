@@ -20,7 +20,7 @@ export default function SearchBar({ onSearch }) {
     <div style={{ display: "flex", width: "100%", justifyContent: "center" }}>
       <input
         type="text"
-        placeholder="Search courses by name, code, or professor"
+        placeholder="Search courses by name or course code"
         style={{
           width: "60%",
           padding: "15px",
