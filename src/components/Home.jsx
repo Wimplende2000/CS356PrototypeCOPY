@@ -12,32 +12,6 @@ export default function Home() {
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("All");
 
-  const navigate = useNavigate()
-
-  const handleModalityChange = selectedModality => {
-    navigate(`/search?modality=${selectedModality}`)
-  }
-
-  const handleSemesterChange = selectedSemester => {
-    navigate(`/search?semester=${selectedSemester}`)
-  }
-
-  const handleDepartmentChange = selectedDepartment => {
-    navigate(`/search?department=${selectedDepartment}`)
-  }
-
-  const handleRequirementChange = selectedDegreeRequirement => {
-    navigate(`/search?requirement=${selectedDegreeRequirement}`)
-  }
-
-  const handleShowLabCoursesChange = showLabCourses => {
-    navigate(`/search?lab=${showLabCourses}`)
-  }
-
-  const handlePrerequisitesChange = showNoPrerequisites => {
-    navigate(`/search?prerequisites=${showNoPrerequisites}`)
-  }
-
   return (
     <div style={{ display: "flex", gap: "20px", padding: "20px", fontFamily: "Arial, sans-serif" }}>
       {/* Sidebar Filters */}
