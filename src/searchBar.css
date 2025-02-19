@@ -1,0 +1,35 @@
+.search-box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .search-prompt {
+    width: 60%;
+    padding: 15px;
+    padding-right: 40px; /* Space for reset button */
+    border-radius: 30px;
+    border: 1px solid #ccc;
+    font-size: 18px;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 20px;
+  }
+  
+  .reset-search {
+    position: absolute;
+    right: 20%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    font-size: 18px;
+    color: #8786b9;
+  }
+  
+  .reset-search:hover {
+    color: #333179;
+  }
+  
