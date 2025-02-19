@@ -1371,7 +1371,292 @@ const courseData = [
           { sectionNumber: "001", professor: "Dr. Alistair Scott", time: "MWF 10:00 AM - 11:00 AM" },
           { sectionNumber: "002", professor: "Prof. Underwood", time: "TTh 1:00 PM - 2:30 PM" }
       ]
-  }
+  },
+  {
+    title: "Calculus III: Multivariable Calculus",
+    code: "MATH 301",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: ["MATH 202"],
+    semester: "Fall 2024",
+    department: "MATH",
+    degreeRequirement: "Major Requirement",
+    instructor: "Dr. Emily Carter",
+    officeHours: "Tue/Thu 10:00 AM - 11:00 AM",
+    textbook: "Multivariable Calculus by James Stewart",
+    gradingPolicy: "Standard",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Emily Carter", time: "MWF 9:00 AM - 10:00 AM" },
+        { sectionNumber: "002", professor: "Prof. Michael Lee", time: "TTh 1:00 PM - 2:30 PM" }
+    ]
+},
+{
+    title: "Linear Algebra and Applications",
+    code: "MATH 310",
+    modality: "Hybrid",
+    hasLab: false,
+    prerequisites: ["MATH 202"],
+    semester: "Spring 2024",
+    department: "MATH",
+    degreeRequirement: "Major Requirement",
+    instructor: "Prof. Michael Lee",
+    officeHours: "Wed/Fri 2:00 PM - 3:00 PM",
+    textbook: "Linear Algebra and Its Applications by Gilbert Strang",
+    gradingPolicy: "Standard",
+    sections: [
+        { sectionNumber: "001", professor: "Prof. Michael Lee", time: "MWF 11:00 AM - 12:00 PM" },
+        { sectionNumber: "002", professor: "Dr. Sarah Johnson", time: "TTh 3:00 PM - 4:30 PM" }
+    ]
+},
+{
+    title: "Probability and Statistics",
+    code: "MATH 320",
+    modality: "Online",
+    hasLab: false,
+    prerequisites: ["MATH 202"],
+    semester: "Winter 2025",
+    department: "MATH",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Sarah Johnson",
+    officeHours: "Mon/Wed 4:00 PM - 5:00 PM (Online)",
+    textbook: "Probability and Statistics for Engineers and Scientists by Walpole",
+    gradingPolicy: "Weighted",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Sarah Johnson", time: "Online - Asynchronous" }
+    ]
+},
+{
+    title: "Discrete Mathematics",
+    code: "MATH 250",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: ["MATH 101"],
+    semester: "Fall 2024",
+    department: "MATH",
+    degreeRequirement: "Major Requirement",
+    instructor: "Prof. David Brown",
+    officeHours: "Tue/Thu 11:00 AM - 12:00 PM",
+    textbook: "Discrete Mathematics and Its Applications by Kenneth Rosen",
+    gradingPolicy: "Standard",
+    sections: [
+        { sectionNumber: "001", professor: "Prof. David Brown", time: "MWF 10:00 AM - 11:00 AM" },
+        { sectionNumber: "002", professor: "Dr. Emily Carter", time: "TTh 2:00 PM - 3:30 PM" }
+    ]
+},
+{
+    title: "Differential Equations",
+    code: "MATH 330",
+    modality: "In-Person",
+    hasLab: true,
+    prerequisites: ["MATH 202"],
+    semester: "Spring 2024",
+    department: "MATH",
+    degreeRequirement: "Major Requirement",
+    instructor: "Dr. Robert Taylor",
+    officeHours: "Mon/Wed 1:00 PM - 2:00 PM",
+    textbook: "Elementary Differential Equations by Boyce and DiPrima",
+    gradingPolicy: "Standard",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Robert Taylor", time: "MWF 12:00 PM - 1:00 PM" },
+        { sectionNumber: "002", professor: "Prof. Michael Lee", time: "TTh 4:00 PM - 5:30 PM" }
+    ]
+},
+{
+    title: "Mathematical Modeling",
+    code: "MATH 410",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: ["MATH 310", "MATH 320"],
+    semester: "Fall 2024",
+    department: "MATH",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Emily Carter",
+    officeHours: "Tue/Thu 3:00 PM - 4:00 PM",
+    textbook: "A First Course in Mathematical Modeling by Giordano",
+    gradingPolicy: "Project-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Emily Carter", time: "MWF 2:00 PM - 3:00 PM" },
+        { sectionNumber: "002", professor: "Prof. David Brown", time: "TTh 5:00 PM - 6:30 PM" }
+    ]
+},
+{
+    title: "Number Theory",
+    code: "MATH 420",
+    modality: "Online",
+    hasLab: false,
+    prerequisites: ["MATH 250"],
+    semester: "Winter 2025",
+    department: "MATH",
+    degreeRequirement: "Elective",
+    instructor: "Prof. David Brown",
+    officeHours: "Wed/Fri 10:00 AM - 11:00 AM (Online)",
+    textbook: "Elementary Number Theory by Kenneth Rosen",
+    gradingPolicy: "Standard",
+    sections: [
+        { sectionNumber: "001", professor: "Prof. David Brown", time: "Online - Asynchronous" }
+    ]
+},
+{
+    title: "Advanced Calculus",
+    code: "MATH 450",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: ["MATH 301"],
+    semester: "Spring 2024",
+    department: "MATH",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Robert Taylor",
+    officeHours: "Mon/Wed 3:00 PM - 4:00 PM",
+    textbook: "Advanced Calculus by Fitzpatrick",
+    gradingPolicy: "Standard",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Robert Taylor", time: "MWF 1:00 PM - 2:00 PM" },
+        { sectionNumber: "002", professor: "Dr. Emily Carter", time: "TTh 6:00 PM - 7:30 PM" }
+    ]
+},
+{
+    title: "Creative Writing: Fiction",
+    code: "ENG 210",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: [],
+    semester: "Fall 2024",
+    department: "ENG",
+    degreeRequirement: "Elective",
+    instructor: "Prof. Laura Bennett",
+    officeHours: "Tue/Thu 10:00 AM - 11:00 AM",
+    textbook: "The Art of Fiction by John Gardner",
+    gradingPolicy: "Portfolio-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Prof. Laura Bennett", time: "MWF 9:00 AM - 10:00 AM" },
+        { sectionNumber: "002", professor: "Dr. Mark Harris", time: "TTh 1:00 PM - 2:30 PM" }
+    ]
+},
+{
+    title: "Shakespeare: Tragedies and Comedies",
+    code: "ENG 320",
+    modality: "Hybrid",
+    hasLab: false,
+    prerequisites: ["ENG 101"],
+    semester: "Spring 2024",
+    department: "ENG",
+    degreeRequirement: "Major Requirement",
+    instructor: "Dr. Mark Harris",
+    officeHours: "Wed/Fri 2:00 PM - 3:00 PM",
+    textbook: "The Complete Works of William Shakespeare",
+    gradingPolicy: "Essay-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Mark Harris", time: "MWF 11:00 AM - 12:00 PM" },
+        { sectionNumber: "002", professor: "Prof. Laura Bennett", time: "TTh 3:00 PM - 4:30 PM" }
+    ]
+},
+{
+    title: "Modern American Literature",
+    code: "ENG 350",
+    modality: "Online",
+    hasLab: false,
+    prerequisites: ["ENG 101"],
+    semester: "Winter 2025",
+    department: "ENG",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Sarah Collins",
+    officeHours: "Mon/Wed 4:00 PM - 5:00 PM (Online)",
+    textbook: "The Norton Anthology of American Literature",
+    gradingPolicy: "Discussion-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Sarah Collins", time: "Online - Asynchronous" }
+    ]
+},
+{
+    title: "Poetry Writing Workshop",
+    code: "ENG 220",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: [],
+    semester: "Fall 2024",
+    department: "ENG",
+    degreeRequirement: "Elective",
+    instructor: "Prof. Laura Bennett",
+    officeHours: "Tue/Thu 11:00 AM - 12:00 PM",
+    textbook: "The Poet's Companion by Addonizio and Laux",
+    gradingPolicy: "Portfolio-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Prof. Laura Bennett", time: "MWF 10:00 AM - 11:00 AM" },
+        { sectionNumber: "002", professor: "Dr. Sarah Collins", time: "TTh 2:00 PM - 3:30 PM" }
+    ]
+},
+{
+    title: "British Literature: 18th Century to Present",
+    code: "ENG 330",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: ["ENG 101"],
+    semester: "Spring 2024",
+    department: "ENG",
+    degreeRequirement: "Major Requirement",
+    instructor: "Dr. Mark Harris",
+    officeHours: "Wed/Fri 1:00 PM - 2:00 PM",
+    textbook: "The Norton Anthology of English Literature",
+    gradingPolicy: "Essay-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Mark Harris", time: "MWF 12:00 PM - 1:00 PM" },
+        { sectionNumber: "002", professor: "Prof. Laura Bennett", time: "TTh 4:00 PM - 5:30 PM" }
+    ]
+},
+{
+    title: "Technical Writing",
+    code: "ENG 240",
+    modality: "Hybrid",
+    hasLab: false,
+    prerequisites: [],
+    semester: "Winter 2025",
+    department: "ENG",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Sarah Collins",
+    officeHours: "Mon/Wed 3:00 PM - 4:00 PM",
+    textbook: "Technical Communication by Mike Markel",
+    gradingPolicy: "Project-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Sarah Collins", time: "MWF 1:00 PM - 2:00 PM" },
+        { sectionNumber: "002", professor: "Prof. Laura Bennett", time: "TTh 5:00 PM - 6:30 PM" }
+    ]
+},
+{
+    title: "World Literature: Ancient to Medieval",
+    code: "ENG 410",
+    modality: "In-Person",
+    hasLab: false,
+    prerequisites: ["ENG 101"],
+    semester: "Fall 2024",
+    department: "ENG",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Mark Harris",
+    officeHours: "Tue/Thu 3:00 PM - 4:00 PM",
+    textbook: "The Norton Anthology of World Literature",
+    gradingPolicy: "Essay-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Mark Harris", time: "MWF 2:00 PM - 3:00 PM" },
+        { sectionNumber: "002", professor: "Dr. Sarah Collins", time: "TTh 6:00 PM - 7:30 PM" }
+    ]
+},
+{
+    title: "Literary Theory and Criticism",
+    code: "ENG 450",
+    modality: "Online",
+    hasLab: false,
+    prerequisites: ["ENG 101"],
+    semester: "Spring 2024",
+    department: "ENG",
+    degreeRequirement: "Elective",
+    instructor: "Dr. Sarah Collins",
+    officeHours: "Wed/Fri 10:00 AM - 11:00 AM (Online)",
+    textbook: "Literary Theory: An Anthology by Rivkin and Ryan",
+    gradingPolicy: "Discussion-Based",
+    sections: [
+        { sectionNumber: "001", professor: "Dr. Sarah Collins", time: "Online - Asynchronous" }
+    ]
+},
+
 ];
 
 export default courseData;
