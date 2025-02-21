@@ -39,5 +39,7 @@ export default function SearchBar({ onSearch }) {
         X
       </button>
     </div>
+
+     //beans(bakes)
   );
 }
