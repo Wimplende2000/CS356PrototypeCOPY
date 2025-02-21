@@ -508,8 +508,8 @@ const courseData = [
       textbook: "Information Architecture for the Web and Beyond",
       gradingPolicy: "Standard",
       sections: [
-          { sectionNumber: "001", professor: "Prof. Foster", time: "MWF 10:00 AM - 11:00 AM" },
-          { sectionNumber: "002", professor: "Dr. Garcia", time: "TTh 1:00 PM - 2:30 PM" }
+          { sectionNumber: "001", professor: "Prof. Jensen", time: "MWF 10:00 AM - 11:00 AM" },
+          { sectionNumber: "002", professor: "Prof. Jensen", time: "TTh 1:00 PM - 2:30 PM" }
       ]
   },
   {
