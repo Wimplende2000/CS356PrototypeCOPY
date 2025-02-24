@@ -120,9 +120,28 @@ export default function CourseSearch() {
   };
 
   const handleAddSection = (course, section) => {
-    const newSchedule = [...schedule, { course, section }];
+    // Retrieve the current schedule from localStorage
+    const currentSchedule = JSON.parse(localStorage.getItem("schedule")) || [];
+  
+    // Check if the section is already in the schedule
+    const isAlreadyAdded = currentSchedule.some(
+      (item) =>
+        item.course.code === course.code &&
+        item.section.sectionNumber === section.sectionNumber
+    );
+  
+    if (isAlreadyAdded) {
+      alert(`You have already added ${course.title} - ${section.time} to your schedule.`);
+      return;
+    }
+  
+    // Add the new course and section to the schedule
+    const newSchedule = [...currentSchedule, { course, section }];
+  
+    // Update the state and localStorage
     setSchedule(newSchedule);
     localStorage.setItem("schedule", JSON.stringify(newSchedule));
+  
     alert(`Added ${course.title} - ${section.time} to your schedule.`);
   };
 
