@@ -9,7 +9,7 @@ import "../courseSearch.css";
 
 // Define the addButtonStyle for the "Add Course" button
 const addButtonStyle = {
-  marginTop: "5px",
+  marginTop: "10px",
   padding: "8px 16px",
   backgroundColor: "#28a745",
   color: "#fff",
@@ -19,13 +19,15 @@ const addButtonStyle = {
   fontSize: "14px",
   fontWeight: "bold",
   transition: "background-color 0.3s ease",
+  width: "100%", // Make the button full width
+  display: "block", // Ensure the button is on a new line
 };
 
 const sidePanelStyle = {
   position: "fixed",
   top: 0,
   right: 0,
-  width: "450px",
+  width: "450px", // Increased width for more space
   height: "100%",
   backgroundColor: "#fff",
   boxShadow: "-2px 0 15px rgba(0, 0, 0, 0.1)",
@@ -38,7 +40,7 @@ const sidePanelStyle = {
 
 const sectionItemStyle = {
   marginBottom: "15px",
-  padding: "10px",
+  padding: "15px",
   border: "1px solid #ddd",
   borderRadius: "8px",
   backgroundColor: "#f9f9f9",
@@ -122,26 +124,26 @@ export default function CourseSearch() {
   const handleAddSection = (course, section) => {
     // Retrieve the current schedule from localStorage
     const currentSchedule = JSON.parse(localStorage.getItem("schedule")) || [];
-  
+
     // Check if the section is already in the schedule
     const isAlreadyAdded = currentSchedule.some(
       (item) =>
         item.course.code === course.code &&
         item.section.sectionNumber === section.sectionNumber
     );
-  
+
     if (isAlreadyAdded) {
       alert(`You have already added ${course.title} - ${section.time} to your schedule.`);
       return;
     }
-  
+
     // Add the new course and section to the schedule
     const newSchedule = [...currentSchedule, { course, section }];
-  
+
     // Update the state and localStorage
     setSchedule(newSchedule);
     localStorage.setItem("schedule", JSON.stringify(newSchedule));
-  
+
     alert(`Added ${course.title} - ${section.time} to your schedule.`);
   };
 
@@ -216,7 +218,9 @@ export default function CourseSearch() {
               <ul style={{ listStyle: "none", padding: 0 }}>
                 {selectedCourse.sections.map((section, secIndex) => (
                   <li key={secIndex} style={sectionItemStyle}>
-                    <strong>Section {section.sectionNumber}:</strong> {section.professor} - {section.time}
+                    <div>
+                      <strong>Section {section.sectionNumber}:</strong> {section.professor} - {section.time}
+                    </div>
                     <button onClick={() => handleAddSection(selectedCourse, section)} style={addButtonStyle}>
                       Add Course
                     </button>
