@@ -1,11 +1,48 @@
 import { useState, useEffect } from "react";
 import SortCourses from "../components/SortCourses";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams, useNavigate } from "react-router-dom";
 import SidebarFilters from "./SidebarFilters";
 import SearchBar from "./SearchBar";
 import { useCourseDataContext } from "../contextsGLOBAL/courseDataContext";
 import courseData from "../contextsGLOBAL/courseData";
 import "../courseSearch.css";
+
+// Define the addButtonStyle for the "Add Course" button
+const addButtonStyle = {
+  marginTop: "5px",
+  padding: "8px 16px",
+  backgroundColor: "#28a745",
+  color: "#fff",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
+  fontSize: "14px",
+  fontWeight: "bold",
+  transition: "background-color 0.3s ease",
+};
+
+const sidePanelStyle = {
+  position: "fixed",
+  top: 0,
+  right: 0,
+  width: "450px",
+  height: "100%",
+  backgroundColor: "#fff",
+  boxShadow: "-2px 0 15px rgba(0, 0, 0, 0.1)",
+  padding: "20px",
+  overflowY: "auto",
+  zIndex: 1000,
+  transform: "translateX(0)",
+  transition: "transform 0.3s ease-in-out",
+};
+
+const sectionItemStyle = {
+  marginBottom: "15px",
+  padding: "10px",
+  border: "1px solid #ddd",
+  borderRadius: "8px",
+  backgroundColor: "#f9f9f9",
+};
 
 export default function CourseSearch() {
   const { filteredList, setFilteredList } = useCourseDataContext();
@@ -20,16 +57,16 @@ export default function CourseSearch() {
   const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("");
   const [sortKey, setSortKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
-
-  // State for managing expanded course details and the sliding panel
+  const [schedule, setSchedule] = useState([]);
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [showPanel, setShowPanel] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     let filteredCourses = courseData.filter(course =>
       (search === "" || course.title.toLowerCase().includes(search.toLowerCase()) ||
-        course.code.toLowerCase().includes(search.toLowerCase()) ||
-        course.department.toLowerCase().includes(search.toLowerCase())) &&
+      course.code.toLowerCase().includes(search.toLowerCase()) ||
+      course.department.toLowerCase().includes(search.toLowerCase())) &&
       (selectedModality === "" || course.modality === selectedModality) &&
       (!showLabCourses || course.hasLab) &&
       (!showNoPrerequisites || course.prerequisites.length === 0) &&
@@ -38,7 +75,6 @@ export default function CourseSearch() {
       (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement)
     );
 
-    // Apply sorting if sortKey is selected
     if (sortKey) {
       filteredCourses = filteredCourses.sort((a, b) => {
         let comparison = 0;
@@ -68,25 +104,47 @@ export default function CourseSearch() {
     sortOrder
   ]);
 
-  // Function to handle sorting updates from SortCourses component
   const handleSortChange = (key, order) => {
     setSortKey(key);
     setSortOrder(order);
   };
 
-  // Function to handle course tile click to open the side panel
   const openSidePanel = (courseCode) => {
     setExpandedCourse(courseCode);
     setShowPanel(true);
   };
 
-  // Function to close the side panel
   const closeSidePanel = () => {
     setShowPanel(false);
     setExpandedCourse(null);
   };
 
-  // Fetch the course data for the expanded course
+  const handleAddSection = (course, section) => {
+    // Retrieve the current schedule from localStorage
+    const currentSchedule = JSON.parse(localStorage.getItem("schedule")) || [];
+  
+    // Check if the section is already in the schedule
+    const isAlreadyAdded = currentSchedule.some(
+      (item) =>
+        item.course.code === course.code &&
+        item.section.sectionNumber === section.sectionNumber
+    );
+  
+    if (isAlreadyAdded) {
+      alert(`You have already added ${course.title} - ${section.time} to your schedule.`);
+      return;
+    }
+  
+    // Add the new course and section to the schedule
+    const newSchedule = [...currentSchedule, { course, section }];
+  
+    // Update the state and localStorage
+    setSchedule(newSchedule);
+    localStorage.setItem("schedule", JSON.stringify(newSchedule));
+  
+    alert(`Added ${course.title} - ${section.time} to your schedule.`);
+  };
+
   const selectedCourse = expandedCourse && courseData.find(course => course.code === expandedCourse);
 
   return (
@@ -108,16 +166,15 @@ export default function CourseSearch() {
 
       <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
         <SearchBar onSearch={setSearch} />
-        <SortCourses onSortChange={handleSortChange} /> {/* Pass sorting function */}
+        <SortCourses onSortChange={handleSortChange} />
 
-        {/* Course Grid */}
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
           {filteredList.length > 0 ? (
             filteredList.map((course, index) => (
               <div key={index} 
                 className="course-box"
                 style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"}}
-                onClick={() => openSidePanel(course.code)} // Open the panel on course click
+                onClick={() => openSidePanel(course.code)}
               >
                 <p style={{ fontSize: "12px", color: "#777", marginBottom: "5px" }}>{course.modality}</p>
                 <h2 style={{ fontSize: "16px", margin: "5px 0", color: "#002E5D", fontWeight: "bold" }}>{course.title}</h2>
@@ -139,43 +196,30 @@ export default function CourseSearch() {
         </div>
       </div>
 
-      {/* Sliding Panel (Pop-up from right side) */}
       {showPanel && selectedCourse && (
-        <div style={{
-          position: "fixed",
-          top: 0,
-          right: 0,
-          width: "350px",
-          height: "100%",
-          backgroundColor: "#fff",
-          boxShadow: "-2px 0 15px rgba(0, 0, 0, 0.1)",
-          padding: "20px",
-          overflowY: "auto",
-          zIndex: 1000,
-          transform: showPanel ? "translateX(0)" : "translateX(100%)",
-          transition: "transform 0.3s ease-in-out",
-        }}>
+        <div style={sidePanelStyle}>
           <button onClick={closeSidePanel} style={{
             backgroundColor: "#FF6347", border: "none", color: "#fff", fontSize: "16px", padding: "10px", borderRadius: "5px", cursor: "pointer", marginBottom: "20px"
           }}>Close</button>
           
-          {/* Course Info at the top of the slide */}
           <div style={{ marginBottom: "20px" }}>
-            <h2 style={{ fontSize: "18px", color: "#002E5D", fontWeight: "bold" }}>{selectedCourse.title}</h2>
+            <h2 style={{ fontSize: "20px", color: "#002E5D", fontWeight: "bold", marginBottom: "10px" }}>{selectedCourse.title}</h2>
             <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>{selectedCourse.code}</p>
             <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Instructor: {selectedCourse.instructor}</p>
             <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Semester: {selectedCourse.semester}</p>
             <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Degree Requirement: {selectedCourse.degreeRequirement}</p>
           </div>
 
-          {/* Render the course sections */}
           {selectedCourse.sections && (
             <div>
               <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Sections:</p>
-              <ul>
+              <ul style={{ listStyle: "none", padding: 0 }}>
                 {selectedCourse.sections.map((section, secIndex) => (
-                  <li key={secIndex}>
+                  <li key={secIndex} style={sectionItemStyle}>
                     <strong>Section {section.sectionNumber}:</strong> {section.professor} - {section.time}
+                    <button onClick={() => handleAddSection(selectedCourse, section)} style={addButtonStyle}>
+                      Add Course
+                    </button>
                   </li>
                 ))}
               </ul>
@@ -183,6 +227,21 @@ export default function CourseSearch() {
           )}
         </div>
       )}
+
+      <button onClick={() => navigate("/schedule")} style={{
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        padding: "10px 20px",
+        backgroundColor: "#002E5D",
+        color: "#fff",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+        zIndex: 1000,
+      }}>
+        Your Schedule
+      </button>
     </div>
   );
 }

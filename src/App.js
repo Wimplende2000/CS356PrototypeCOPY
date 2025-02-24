@@ -7,9 +7,10 @@ import FAQ from './components/header/FAQ';
 import GeneralEducation from './components/header/GeneralEducation';
 import Policy from './components/header/Policy';
 import AboutBYU from './components/header/AboutBYU';
-import Footer from './components/footer/Footer'; // Import your Footer component
+import Footer from './components/footer/Footer';
 import Privacy from './components/footer/Privacy';
 import CookiePreferences from './components/footer/CookiePreferences';
+import Schedule from './components/Schedule'; // Import the Schedule component
 
 function App() {
   return (
@@ -22,10 +23,11 @@ function App() {
         <Route path="/policy" element={<Policy />} />
         <Route path="/about-byu" element={<AboutBYU />} />
         <Route path="/faq" element={<FAQ />} />
-        <Route path="/privacy" element={<Privacy />} /> {/* Add the Privacy route */}
+        <Route path="/privacy" element={<Privacy />} />
         <Route path="/cookie-preferences" element={<CookiePreferences />} />
+        <Route path="/schedule" element={<Schedule />} /> {/* Add the Schedule route */}
       </Routes>
-      <Footer /> {/* This footer will appear on every page */}
+      <Footer />
     </Router>
   );
 }
