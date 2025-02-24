@@ -11,10 +11,10 @@ export default function Home() {
   const [selectedSemester, setSelectedSemester] = useState("All");
   const [selectedDepartment, setSelectedDepartment] = useState("All");
   const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("All");
+  const navigate = useNavigate();
 
   return (
     <div style={{ display: "flex", gap: "20px", padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      {/* Sidebar Filters */}
       <SidebarFilters
         selectedModality={selectedModality}
         setSelectedModality={setSelectedModality}
@@ -30,10 +30,24 @@ export default function Home() {
         setShowNoPrerequisites={setShowNoPrerequisites}
       />
 
-      {/* Search Bar */}
       <div style={{ flex: 1, display: "flex", justifyContent: "center", alignItems: "center", height:"50vh", width: "100%" }}>
         <SearchBar onSearch={setSearch} />
       </div>
+
+      <button onClick={() => navigate("/schedule")} style={{
+        position: "fixed",
+        bottom: "20px",
+        right: "20px",
+        padding: "10px 20px",
+        backgroundColor: "#002E5D",
+        color: "#fff",
+        border: "none",
+        borderRadius: "5px",
+        cursor: "pointer",
+        zIndex: 1000,
+      }}>
+        Your Schedule
+      </button>
     </div>
   );
 }

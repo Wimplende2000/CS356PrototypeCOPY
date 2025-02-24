@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function CourseModal({ course, onClose }) {
+export default function CourseModal({ course, onClose, onAddSection }) {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.key === "Escape") {
@@ -29,6 +29,7 @@ export default function CourseModal({ course, onClose }) {
               <li key={index}>
                 <p><strong>Professor:</strong> {section.professor}</p>
                 <p><strong>Time:</strong> {section.time}</p>
+                <button onClick={() => onAddSection(course, section)} style={addButtonStyle}>Add Course</button>
               </li>
             ))}
           </ul>
@@ -66,6 +67,16 @@ const closeButtonStyle = {
   marginTop: "10px",
   padding: "10px",
   backgroundColor: "#002E5D",
+  color: "#fff",
+  border: "none",
+  borderRadius: "4px",
+  cursor: "pointer",
+};
+
+const addButtonStyle = {
+  marginTop: "5px",
+  padding: "5px 10px",
+  backgroundColor: "#28a745",
   color: "#fff",
   border: "none",
   borderRadius: "4px",
