@@ -57,7 +57,7 @@ export default function CourseSearch() {
 
     setFilteredList(filteredCourses);
   }, [
-    search, // <-- Use search state so filter re-runs when user types
+    search, // Use the updated search state here
     selectedModality,
     showLabCourses,
     showNoPrerequisites,
@@ -68,19 +68,19 @@ export default function CourseSearch() {
     sortOrder
   ]);
 
-  // Sorting handler from the SortCourses component
+  // Function to handle sorting updates from SortCourses component
   const handleSortChange = (key, order) => {
     setSortKey(key);
     setSortOrder(order);
   };
 
-  // Open the sliding side panel for course details
+  // Function to handle course tile click to open the side panel
   const openSidePanel = (courseCode) => {
     setExpandedCourse(courseCode);
     setShowPanel(true);
   };
 
-  // Close the sliding side panel
+  // Function to close the side panel
   const closeSidePanel = () => {
     setShowPanel(false);
     setExpandedCourse(null);
@@ -164,7 +164,7 @@ export default function CourseSearch() {
         </div>
       </div>
 
-      {/* Sliding Panel for course details */}
+      {/* Sliding Panel (Pop-up from right side) */}
       {showPanel && selectedCourse && (
         <div style={{
           position: "fixed",
@@ -215,9 +215,7 @@ export default function CourseSearch() {
           {/* Render the course sections */}
           {selectedCourse.sections && (
             <div>
-              <p style={{ fontWeight: "bold", marginBottom: "10px" }}>
-                Sections:
-              </p>
+              <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Sections:</p>
               <ul>
                 {selectedCourse.sections.map((section, secIndex) => (
                   <li key={secIndex}>
