@@ -22,10 +22,15 @@ export default function CourseSearch() {
   const [sortOrder, setSortOrder] = useState("asc");
   const [expandedCourse, setExpandedCourse] = useState(null);
   const [showPanel, setShowPanel] = useState(false);
+  const [selectedCourseLevel, setSelectedCourseLevel] = useState("");
+
+
 
   useEffect(() => {
     let filteredCourses = courseData.filter((course) => {
       const lowerSearch = search.trim().toLowerCase();
+      const courseLevel = parseInt(course.code.match(/\d+/)?.[0]?.charAt(0)) * 100 || 0; // Extract first digit and multiply by 100
+  
       return (
         (lowerSearch === "" ||
           course.title.toLowerCase().includes(lowerSearch) ||
@@ -36,10 +41,11 @@ export default function CourseSearch() {
         (!showNoPrerequisites || course.prerequisites.length === 0) &&
         (selectedSemester === "" || course.semester === selectedSemester) &&
         (selectedDepartment === "" || course.department === selectedDepartment) &&
-        (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement)
+        (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement) &&
+        (selectedCourseLevel === "" || courseLevel === parseInt(selectedCourseLevel))
       );
     });
-
+  
     if (sortKey) {
       filteredCourses = filteredCourses.sort((a, b) => {
         const valueA = String(a[sortKey]).toUpperCase();
@@ -50,7 +56,7 @@ export default function CourseSearch() {
         return sortOrder === "asc" ? comparison : -comparison;
       });
     }
-
+  
     setFilteredList(filteredCourses);
   }, [
     search,
@@ -60,6 +66,7 @@ export default function CourseSearch() {
     selectedSemester,
     selectedDepartment,
     selectedDegreeRequirement,
+    selectedCourseLevel,
     sortKey,
     sortOrder,
   ]);
@@ -106,20 +113,23 @@ export default function CourseSearch() {
           filter: showPanel ? "blur(5px)" : "none",
         }}
       >
-        <SidebarFilters
-          selectedModality={selectedModality}
-          setSelectedModality={setSelectedModality}
-          selectedSemester={selectedSemester}
-          setSelectedSemester={setSelectedSemester}
-          selectedDepartment={selectedDepartment}
-          setSelectedDepartment={setSelectedDepartment}
-          selectedDegreeRequirement={selectedDegreeRequirement}
-          setSelectedDegreeRequirement={setSelectedDegreeRequirement}
-          showLabCourses={showLabCourses}
-          setShowLabCourses={setShowLabCourses}
-          showNoPrerequisites={showNoPrerequisites}
-          setShowNoPrerequisites={setShowNoPrerequisites}
-        />
+   <SidebarFilters
+  selectedModality={selectedModality}
+  setSelectedModality={setSelectedModality}
+  selectedSemester={selectedSemester}
+  setSelectedSemester={setSelectedSemester}
+  selectedDepartment={selectedDepartment}
+  setSelectedDepartment={setSelectedDepartment}
+  selectedDegreeRequirement={selectedDegreeRequirement}
+  setSelectedDegreeRequirement={setSelectedDegreeRequirement}
+  showLabCourses={showLabCourses}
+  setShowLabCourses={setShowLabCourses}
+  showNoPrerequisites={showNoPrerequisites}
+  setShowNoPrerequisites={setShowNoPrerequisites}
+  selectedCourseLevel={selectedCourseLevel}
+  setSelectedCourseLevel={setSelectedCourseLevel}
+/>
+
 
         <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
           <SearchBar onSearch={setSearch} />
