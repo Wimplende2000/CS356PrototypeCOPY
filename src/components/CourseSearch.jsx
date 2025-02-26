@@ -207,7 +207,8 @@ export default function CourseSearch() {
             Close
           </button>
           <div style={{ marginBottom: "30px" }}>
-            <h2 style={{ fontSize: "25px", color: "#002E5D", fontWeight: "bold" }}>{selectedCourse.title}</h2>
+            <h2 style={{ fontSize: "23px", color: "#002E5D", fontWeight: "bold",position:"fixed",top:"40px"}}>{selectedCourse.title}</h2>
+
             <p style={{ fontWeight: "bold",
                 color: "#555",
                 marginBottom: "5px",
@@ -215,9 +216,9 @@ export default function CourseSearch() {
             >
               {selectedCourse.code}
             </p>
-            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Instructor: {selectedCourse.instructor}</p>
-            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Semester: {selectedCourse.semester}</p>
-            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>
+            <p style={{ color: "#555", fontSize: "20px", marginBottom: "5px" }}>Instructor: {selectedCourse.instructor}</p>
+            <p style={{ color: "#555", fontSize: "20px", marginBottom: "5px" }}>Semester: {selectedCourse.semester}</p>
+            <p style={{ color: "#555", fontSize: "20px", marginBottom: "5px" }}>
               Degree Requirement: {selectedCourse.degreeRequirement}
             </p>
           </div>
