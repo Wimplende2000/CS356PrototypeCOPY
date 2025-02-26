@@ -50,6 +50,7 @@ export default function CourseSearch() {
   const { filteredList, setFilteredList } = useCourseDataContext();
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
+  // Initialize search state from query; then SearchBar updates it.
   const [search, setSearch] = useState(query);
   const [selectedModality, setSelectedModality] = useState("");
   const [showLabCourses, setShowLabCourses] = useState(false);
@@ -65,7 +66,7 @@ export default function CourseSearch() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let filteredCourses = courseData.filter((course) => {
+    let filteredCourses = courseData.filter(course => {
       const lowerSearch = search.trim().toLowerCase();
       const courseLevel = parseInt(course.code.match(/\d+/)?.[0]?.charAt(0)) * 100 || 0; // Extract first digit and multiply by 100
   
@@ -107,19 +108,22 @@ export default function CourseSearch() {
     selectedDegreeRequirement,
     selectedCourseLevel,
     sortKey,
-    sortOrder,
+    sortOrder
   ]);
 
+  // Function to handle sorting updates from SortCourses component
   const handleSortChange = (key, order) => {
     setSortKey(key);
     setSortOrder(order);
   };
 
+  // Function to handle course tile click to open the side panel
   const openSidePanel = (courseCode) => {
     setExpandedCourse(courseCode);
     setShowPanel(true);
   };
 
+  // Function to close the side panel
   const closeSidePanel = () => {
     setShowPanel(false);
     setExpandedCourse(null);
@@ -196,9 +200,9 @@ export default function CourseSearch() {
 />
 
 
-        <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
-          <SearchBar onSearch={setSearch} />
-          <SortCourses onSortChange={handleSortChange} />
+      <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
+        <SearchBar onSearch={setSearch} />
+        <SortCourses onSortChange={handleSortChange} />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
           {filteredList.length > 0 ? (
@@ -252,6 +256,7 @@ export default function CourseSearch() {
         </div>
       </div>
 
+      {/* Sliding Panel (Pop-up from right side) */}
       {showPanel && selectedCourse && (
         <div style={sidePanelStyle}>
           <button onClick={closeSidePanel} style={{
@@ -281,6 +286,7 @@ export default function CourseSearch() {
             </p>
           </div>
 
+          {/* Render the course sections */}
           {selectedCourse.sections && (
             <div>
               <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Sections:</p>
