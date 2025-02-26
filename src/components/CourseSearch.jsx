@@ -65,8 +65,10 @@ export default function CourseSearch() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    let filteredCourses = courseData.filter(course => {
+    let filteredCourses = courseData.filter((course) => {
       const lowerSearch = search.trim().toLowerCase();
+      const courseLevel = parseInt(course.code.match(/\d+/)?.[0]?.charAt(0)) * 100 || 0; // Extract first digit and multiply by 100
+  
       return (
         (lowerSearch === "" ||
           course.title.toLowerCase().includes(lowerSearch) ||
@@ -77,11 +79,11 @@ export default function CourseSearch() {
         (!showNoPrerequisites || course.prerequisites.length === 0) &&
         (selectedSemester === "" || course.semester === selectedSemester) &&
         (selectedDepartment === "" || course.department === selectedDepartment) &&
-        (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement)
+        (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement) &&
+        (selectedCourseLevel === "" || courseLevel === parseInt(selectedCourseLevel))
       );
     });
-
-    // Apply sorting if sortKey is selected
+  
     if (sortKey) {
       filteredCourses = filteredCourses.sort((a, b) => {
         const valueA = String(a[sortKey]).toUpperCase();
@@ -92,9 +94,10 @@ export default function CourseSearch() {
         return sortOrder === "asc" ? comparison : -comparison;
       });
     }
-
+  
     setFilteredList(filteredCourses);
   }, [
+    search,
     search,
     selectedModality,
     showLabCourses,
@@ -102,8 +105,9 @@ export default function CourseSearch() {
     selectedSemester,
     selectedDepartment,
     selectedDegreeRequirement,
+    selectedCourseLevel,
     sortKey,
-    sortOrder
+    sortOrder,
   ]);
 
   const handleSortChange = (key, order) => {
@@ -150,25 +154,51 @@ export default function CourseSearch() {
   const selectedCourse = expandedCourse && courseData.find(course => course.code === expandedCourse);
 
   return (
-    <div style={{ display: "flex", gap: "20px", padding: "20px", fontFamily: "Arial, sans-serif" }}>
-      <SidebarFilters
-        selectedModality={selectedModality}
-        setSelectedModality={setSelectedModality}
-        selectedSemester={selectedSemester}
-        setSelectedSemester={setSelectedSemester}
-        selectedDepartment={selectedDepartment}
-        setSelectedDepartment={setSelectedDepartment}
-        selectedDegreeRequirement={selectedDegreeRequirement}
-        setSelectedDegreeRequirement={setSelectedDegreeRequirement}
-        showLabCourses={showLabCourses}
-        setShowLabCourses={setShowLabCourses}
-        showNoPrerequisites={showNoPrerequisites}
-        setShowNoPrerequisites={setShowNoPrerequisites}
-      />
+    <div style={{ position: "relative", display: "flex", gap: "20px", padding: "20px", fontFamily: "Arial, sans-serif" }}>
+      {showPanel && (
+        <div
+          style={{
+            position: "fixed",
+            top: 0,
+            left: 0,
+            width: "100%",
+            height: "100%",
+            backgroundColor: "rgba(0, 0, 0, 0.5)",
+            zIndex: 999,
+          }}
+        />
+      )}
 
-      <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
-        <SearchBar onSearch={setSearch} />
-        <SortCourses onSortChange={handleSortChange} />
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          gap: "20px",
+          transition: "filter 0.3s ease-in-out",
+          filter: showPanel ? "blur(5px)" : "none",
+        }}
+      >
+   <SidebarFilters
+  selectedModality={selectedModality}
+  setSelectedModality={setSelectedModality}
+  selectedSemester={selectedSemester}
+  setSelectedSemester={setSelectedSemester}
+  selectedDepartment={selectedDepartment}
+  setSelectedDepartment={setSelectedDepartment}
+  selectedDegreeRequirement={selectedDegreeRequirement}
+  setSelectedDegreeRequirement={setSelectedDegreeRequirement}
+  showLabCourses={showLabCourses}
+  setShowLabCourses={setShowLabCourses}
+  showNoPrerequisites={showNoPrerequisites}
+  setShowNoPrerequisites={setShowNoPrerequisites}
+  selectedCourseLevel={selectedCourseLevel}
+  setSelectedCourseLevel={setSelectedCourseLevel}
+/>
+
+
+        <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
+          <SearchBar onSearch={setSearch} />
+          <SortCourses onSortChange={handleSortChange} />
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
           {filteredList.length > 0 ? (
@@ -244,13 +274,9 @@ export default function CourseSearch() {
             <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>
               {selectedCourse.code}
             </p>
-            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>
-              Instructor: {selectedCourse.instructor}
-            </p>
-            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>
-              Semester: {selectedCourse.semester}
-            </p>
-            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>
+            <p style={{ color: "#555", fontSize: "20px", marginBottom: "5px" }}>Instructor: {selectedCourse.instructor}</p>
+            <p style={{ color: "#555", fontSize: "20px", marginBottom: "5px" }}>Semester: {selectedCourse.semester}</p>
+            <p style={{ color: "#555", fontSize: "20px", marginBottom: "5px" }}>
               Degree Requirement: {selectedCourse.degreeRequirement}
             </p>
           </div>
