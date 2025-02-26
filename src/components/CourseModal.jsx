@@ -13,9 +13,7 @@ export default function CourseModal({ course, onClose, onAddSection }) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, [onClose]);
-
   if (!course) return null;
-
   return (
     <div style={modalOverlayStyle} onClick={onClose}>
       <div style={modalStyle} onClick={(e) => e.stopPropagation()}>
