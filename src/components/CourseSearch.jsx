@@ -191,7 +191,11 @@ export default function CourseSearch() {
             onClick={closeSidePanel}
             style={{
               backgroundColor: "#FF6347",
+              boxShadow:"0px 4px 10px rgba(0, 0, 0, 0.2)",
               border: "none",
+              position:"relative",
+              left:"93%",
+              top:"1%",
               color: "#fff",
               fontSize: "16px",
               padding: "10px",
@@ -202,8 +206,8 @@ export default function CourseSearch() {
           >
             Close
           </button>
-          <div style={{ marginBottom: "20px" }}>
-            <h2 style={{ fontSize: "18px", color: "#002E5D", fontWeight: "bold" }}>{selectedCourse.title}</h2>
+          <div style={{ marginBottom: "30px" }}>
+            <h2 style={{ fontSize: "25px", color: "#002E5D", fontWeight: "bold" }}>{selectedCourse.title}</h2>
             <p style={{ fontWeight: "bold",
                 color: "#555",
                 marginBottom: "5px",
@@ -232,6 +236,9 @@ export default function CourseSearch() {
           )}
         </div>
       )}
+
+
+      
     </div>
   );
 }
