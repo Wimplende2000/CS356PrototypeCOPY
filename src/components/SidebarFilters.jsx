@@ -65,7 +65,8 @@ export default function SidebarFilters({
     selectedDegreeRequirement,
     showLabCourses,
     selectedCourseLevel,
-    showNoPrerequisites
+    showNoPrerequisites,
+    setSelectedCourseLevel
   ]);
 
   const handleReset = () => {
