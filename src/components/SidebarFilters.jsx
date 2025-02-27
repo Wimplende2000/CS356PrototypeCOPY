@@ -1,7 +1,7 @@
 
 import React, { useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
-
+import CourseSearch from "./CourseSearch";
 export default function SidebarFilters({
   selectedModality,
   setSelectedModality,
@@ -16,7 +16,9 @@ export default function SidebarFilters({
   showLabCourses,
   setShowLabCourses,
   showNoPrerequisites,
-  setShowNoPrerequisites
+  setShowNoPrerequisites,
+  selectedCourseLevel,
+  setSelectedCourseLevel,
 }) {
   const navigate = useNavigate();
 
@@ -26,6 +28,7 @@ export default function SidebarFilters({
       selectedSemester !== "All" ||
       selectedDepartment !== "All" ||
       selectedDegreeRequirement !== "All" ||
+      selectedCourseLevel !== "All" ||
       selectedCreditHours !== "All" ||
       showLabCourses ||
       showNoPrerequisites
@@ -41,6 +44,7 @@ export default function SidebarFilters({
     selectedDegreeRequirement,
     selectedCreditHours,
     showLabCourses,
+    selectedCourseLevel,
     showNoPrerequisites,
     navigate
   ]);
@@ -55,6 +59,7 @@ export default function SidebarFilters({
         selectedDegreeRequirement,
         selectedCreditHours,
         showLabCourses,
+        setSelectedCourseLevel,
         showNoPrerequisites
       })
     );
@@ -65,7 +70,9 @@ export default function SidebarFilters({
     selectedDegreeRequirement,
     selectedCreditHours,
     showLabCourses,
-    showNoPrerequisites
+    selectedCourseLevel,
+    showNoPrerequisites,
+    setSelectedCourseLevel
   ]);
 
   const handleReset = () => {
@@ -76,6 +83,7 @@ export default function SidebarFilters({
     setSelectedCreditHours("All");
     setShowLabCourses(false);
     setShowNoPrerequisites(false);
+    setSelectedCourseLevel("All")
   };
 
   return (
@@ -127,6 +135,23 @@ export default function SidebarFilters({
           <option value="ENG">English</option>
         </select>
       </div>
+
+  <div style={{ marginBottom: "15px" }}> 
+    <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Course Level</label>
+    <select
+      style={{ width: "100%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+      value={selectedCourseLevel}
+      onChange={(e) => setSelectedCourseLevel(e.target.value)}
+    >
+      <option value="">All Levels</option>
+      <option value="100">100 Level</option>
+      <option value="200">200 Level</option>
+      <option value="300">300 Level</option>
+      <option value="400">400 Level</option>
+      <option value="500">500 Level</option>
+    </select>
+  </div>
+
 
       <div style={{ marginBottom: "15px" }}>
         <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Degree Requirement</label>
@@ -184,6 +209,7 @@ export default function SidebarFilters({
       >
         Reset Filters
       </button>
+
     </div>
   );
 }

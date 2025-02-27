@@ -56,7 +56,7 @@ const Header = () => {
             <Link to="/about-byu" style={linkStyle}>About BYU</Link>
           </li>
           <li style={navItemStyle}>
-            <Link to="/faq" style={linkStyle}>F&amp;Q</Link>
+            <Link to="/faq" style={linkStyle}>FAQ</Link>
           </li>
         </ul>
       </nav>
