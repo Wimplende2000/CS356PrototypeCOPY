@@ -55,6 +55,7 @@ export default function CourseSearch() {
   const [selectedSemester, setSelectedSemester] = useState("");
   const [selectedDepartment, setSelectedDepartment] = useState("");
   const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("");
+  const [selectedCreditHours, setSelectedCreditHours] = useState("");
   const [sortKey, setSortKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [schedule, setSchedule] = useState([]);
@@ -72,7 +73,8 @@ export default function CourseSearch() {
       (!showNoPrerequisites || course.prerequisites.length === 0) &&
       (selectedSemester === "" || course.semester === selectedSemester) &&
       (selectedDepartment === "" || course.department === selectedDepartment) &&
-      (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement)
+      (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement) &&
+      (selectedCreditHours === "" || course.creditHours === selectedCreditHours)
     );
 
     if (sortKey) {
@@ -100,6 +102,7 @@ export default function CourseSearch() {
     selectedSemester,
     selectedDepartment,
     selectedDegreeRequirement,
+    selectedCreditHours,
     sortKey,
     sortOrder
   ]);
@@ -158,6 +161,8 @@ export default function CourseSearch() {
         setSelectedDepartment={setSelectedDepartment}
         selectedDegreeRequirement={selectedDegreeRequirement}
         setSelectedDegreeRequirement={setSelectedDegreeRequirement}
+        selectedCreditHours={selectedCreditHours}
+        setSelectedCreditHours={setSelectedCreditHours}
         showLabCourses={showLabCourses}
         setShowLabCourses={setShowLabCourses}
         showNoPrerequisites={showNoPrerequisites}

@@ -11,6 +11,8 @@ export default function SidebarFilters({
   setSelectedDepartment,
   selectedDegreeRequirement,
   setSelectedDegreeRequirement,
+  selectedCreditHours,
+  setSelectedCreditHours,
   showLabCourses,
   setShowLabCourses,
   showNoPrerequisites,
@@ -24,6 +26,7 @@ export default function SidebarFilters({
       selectedSemester !== "All" ||
       selectedDepartment !== "All" ||
       selectedDegreeRequirement !== "All" ||
+      selectedCreditHours !== "All" ||
       showLabCourses ||
       showNoPrerequisites
     ) {
@@ -36,6 +39,7 @@ export default function SidebarFilters({
     selectedSemester,
     selectedDepartment,
     selectedDegreeRequirement,
+    selectedCreditHours,
     showLabCourses,
     showNoPrerequisites,
     navigate
@@ -49,6 +53,7 @@ export default function SidebarFilters({
         selectedSemester,
         selectedDepartment,
         selectedDegreeRequirement,
+        selectedCreditHours,
         showLabCourses,
         showNoPrerequisites
       })
@@ -58,6 +63,7 @@ export default function SidebarFilters({
     selectedSemester,
     selectedDepartment,
     selectedDegreeRequirement,
+    selectedCreditHours,
     showLabCourses,
     showNoPrerequisites
   ]);
@@ -67,6 +73,7 @@ export default function SidebarFilters({
     setSelectedSemester("All");
     setSelectedDepartment("All");
     setSelectedDegreeRequirement("All");
+    setSelectedCreditHours("All");
     setShowLabCourses(false);
     setShowNoPrerequisites(false);
   };
@@ -96,14 +103,14 @@ export default function SidebarFilters({
           value={selectedSemester}
           onChange={(e) => setSelectedSemester(e.target.value)}
         >
-<option value="All">All Semesters</option>
-<option value="Fall 2023">Fall 2023</option>
-<option value="Fall 2024">Fall 2024</option>
-<option value="Fall/Winter">Fall/Winter</option>
-<option value="Spring 2024">Spring 2024</option>
-<option value="Spring 2025">Spring 2025</option>
-<option value="Winter 2024">Winter 2024</option>
-<option value="Winter 2025">Winter 2025</option>
+        <option value="All">All Semesters</option>
+        <option value="Fall 2023">Fall 2023</option>
+        <option value="Fall 2024">Fall 2024</option>
+        <option value="Fall/Winter">Fall/Winter</option>
+        <option value="Spring 2024">Spring 2024</option>
+        <option value="Spring 2025">Spring 2025</option>
+        <option value="Winter 2024">Winter 2024</option>
+        <option value="Winter 2025">Winter 2025</option>
         </select>
       </div>
 
@@ -132,6 +139,21 @@ export default function SidebarFilters({
           <option value="Major Requirement">Major Requirement</option>
           <option value="General Education">General Education</option>
           <option value="Elective">Elective</option>
+        </select>
+      </div>
+
+      <div style={{ marginBottom: "15px" }}>
+        <label style={{ display: "block", marginBottom: "5px", color: "#555", fontSize: "14px" }}>Credit Hours</label>
+        <select
+          style={{ width: "100%", padding: "8px", borderRadius: "4px", border: "1px solid #ccc" }}
+          value={selectedCreditHours}
+          onChange={(e) => setSelectedCreditHours(e.target.value)}
+        >
+          <option value="All">All Credits</option>
+          <option value="1">1 Credit</option>
+          <option value="2">2 Credits</option>
+          <option value="3">3 Credits</option>
+          <option value="4">4 Credits</option>
         </select>
       </div>
 
