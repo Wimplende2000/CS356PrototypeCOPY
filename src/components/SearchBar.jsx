@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./searchBar.css";
+import "../styleFiles/searchBar.css";
 
 export default function SearchBar({ onSearch }) {
   const [query, setQuery] = useState("");
@@ -26,7 +26,7 @@ export default function SearchBar({ onSearch }) {
       );
       return [trimmedQuery, ...filteredHistory];
     });
-    navigate(`/search?q=${encodeURIComponent(trimmedQuery)}`);
+    navigate(`/?q=${encodeURIComponent(trimmedQuery)}`);
   };
 
   const handleKeyDown = (event) => {
@@ -38,13 +38,12 @@ export default function SearchBar({ onSearch }) {
   const handleResetSearchbar = () => {
     setQuery("");
     onSearch("");
-    navigate("/search");
   };
 
   const handleHistoryClick = (item) => {
     setQuery(item);
     onSearch(item);
-    navigate(`/search?q=${encodeURIComponent(item)}`);
+    navigate(`/?q=${encodeURIComponent(item)}`);
   };
 
   const deleteHistoryItem = (index) => {

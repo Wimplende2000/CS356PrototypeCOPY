@@ -1,0 +1,106 @@
+.filter-box {
+  width: 250px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.filter-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  h3 {
+    color: #002E5D;
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  button {
+    border-color: grey;
+    border-radius: 5px;
+    background-color: #002E5D;
+    height: 50%;
+    margin-left: auto;
+    margin-right: 15px;
+    font-size: 12px;
+    color: rgb(223, 222, 233);
+    transition: transform 0.5s ease;
+  }
+}
+
+.dropdown-button {
+  outline: none;
+  border: none;
+  background: none;
+  width: 100%;
+  font-size: 16px;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  padding-right: 8px;
+  color: #555;
+}
+
+.dropper {
+  margin-left: 10px;  /* Space between the text and the arrow */
+  font-size: 18px;  /* Set size of the arrow */
+  transition: transform 0.5s ease;
+  font-style: normal;
+}
+
+.dropper.up::before {
+  content: "\002b"; /* Unicode for upward arrow */
+}
+
+.dropper.down::before {
+  content: "\002d"; /* Unicode for downward arrow */
+}
+
+.filter-reset {
+  width: 100%;
+  padding: 10px;
+  background-color: rgb(189, 34, 34);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.buffer {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 14px;
+
+  .filter-type {
+    margin-top: 10px;
+    margin-bottom: 15px;
+
+    .dropdown-items { 
+      margin-left: 10px;
+      display: flexbox;
+      flex-direction: column;
+      margin-bottom: 5px;
+      display: block;
+      color: #555;
+      font-size: 14px;
+    }
+
+  }
+}
+
+input {
+  margin-right: 8px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 14px;
+}

@@ -12,7 +12,7 @@
 /* Container for the input and reset button */
 .search-box {
   position: relative;
-  width: 100%;
+  width: 100%;  
 }
 
 /* Style for the search input */
@@ -33,6 +33,10 @@
   border: none;
   cursor: pointer;
   font-size: 16px;
+}
+
+.reset-search:hover {
+  color: rgb(168, 16, 16);
 }
 
 /* Dropdown container for the search history */
@@ -70,7 +74,7 @@
 /* Style for the delete icon next to each history item */
 .delete-history-item {
   margin-left: 8px;
-  color: red;
+  color: rgb(168, 16, 16);
   font-weight: bold;
   cursor: pointer;
 }

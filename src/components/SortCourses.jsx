@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaSortUp, FaSortDown } from "react-icons/fa"; 
 import { useCourseDataContext } from "../contextsGLOBAL/courseDataContext"; 
-import "../sortCourses.css"
+import "../styleFiles/sortCourses.css"
 
 export default function SortCourses({ onSortChange }) { // Accept onSortChange prop
   const [sortKey, setSortKey] = useState("");
@@ -21,7 +21,7 @@ export default function SortCourses({ onSortChange }) { // Accept onSortChange p
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "end", alignItems: "center", marginBottom: "10px", gap:"5px" }}>
+    <div className="sort-bar">
       <label className="sort-by">Sort by:</label>
       <select
         value={sortKey}
@@ -34,6 +34,7 @@ export default function SortCourses({ onSortChange }) { // Accept onSortChange p
         <option value="instructor">Instructor</option>
         <option value="semester">Semester</option>
         <option value="modality">Modality</option>
+        <option value="hours">Hours</option>
       </select>
 
       <button

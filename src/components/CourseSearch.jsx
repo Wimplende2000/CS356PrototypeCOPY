@@ -5,7 +5,7 @@ import SidebarFilters from "./SidebarFilters";
 import SearchBar from "./SearchBar";
 import { useCourseDataContext } from "../contextsGLOBAL/courseDataContext";
 import courseData from "../contextsGLOBAL/courseData";
-import "../courseSearch.css";
+import "../styleFiles/courseSearch.css";
 
 // Define the addButtonStyle for the "Add Course" button
 const addButtonStyle = {
@@ -48,16 +48,18 @@ const sectionItemStyle = {
 
 export default function CourseSearch() {
   const { filteredList, setFilteredList } = useCourseDataContext();
+  const [selectedFilters, setSelectedFilters] = useState([]);
   const [searchParams] = useSearchParams();
   const query = searchParams.get("q") || "";
   const [search, setSearch] = useState(query);
-  const [selectedModality, setSelectedModality] = useState("");
+  const [selectedModality, setSelectedModality] = useState([]);
   const [showLabCourses, setShowLabCourses] = useState(false);
   const [showNoPrerequisites, setShowNoPrerequisites] = useState(false);
-  const [selectedSemester, setSelectedSemester] = useState("");
-  const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState("");
-  const [selectedCreditHours, setSelectedCreditHours] = useState("");
+  const [selectedSemester, setSelectedSemester] = useState([]);
+  const [selectedDepartment, setSelectedDepartment] = useState([]);
+  const [selectedDegreeRequirement, setSelectedDegreeRequirement] = useState([]);
+  const [selectedCreditHours, setSelectedCreditHours] = useState([]);
+  const [selectedCourseLevel, setSelectedCourseLevel] = useState([]);
   const [sortKey, setSortKey] = useState("");
   const [sortOrder, setSortOrder] = useState("asc");
   const [schedule, setSchedule] = useState([]);
@@ -66,18 +68,26 @@ export default function CourseSearch() {
   const navigate = useNavigate();
 
   useEffect(() => {
+
+    courseData.forEach(course => {
+      const firstDigit = course.code.match(/\d/)[0];
+      course.courseLevel = `${firstDigit}00 Level`;
+    });
+
     let filteredCourses = courseData.filter(course =>
       (search === "" || course.title.toLowerCase().includes(search.toLowerCase()) ||
       course.code.toLowerCase().includes(search.toLowerCase()) ||
       course.department.toLowerCase().includes(search.toLowerCase())) &&
-      (selectedModality === "" || course.modality === selectedModality) &&
+      (selectedModality.length === 0 || selectedModality.includes(course.modality)) &&
       (!showLabCourses || course.hasLab) &&
       (!showNoPrerequisites || course.prerequisites.length === 0) &&
-      (selectedSemester === "" || course.semester === selectedSemester) &&
-      (selectedDepartment === "" || course.department === selectedDepartment) &&
-      (selectedDegreeRequirement === "" || course.degreeRequirement === selectedDegreeRequirement) &&
-      (selectedCreditHours === "" || course.creditHours === selectedCreditHours)
-    );
+      (selectedSemester.length === 0 || selectedSemester.includes(course.semester)) &&
+      (selectedDepartment.length === 0 || selectedDepartment.includes(course.department)) &&
+      (selectedDegreeRequirement.length === 0 || selectedDegreeRequirement.includes(course.degreeRequirement)) &&
+      (selectedCreditHours.length === 0 || selectedCreditHours.includes(course.creditHours)) &&
+      (selectedCourseLevel.length === 0 || selectedCourseLevel.includes(course.courseLevel)) &&
+      (selectedFilters.length === 0 || selectedFilters.every(filter => course.tags.includes(filter)))
+    );    
 
     if (sortKey) {
       filteredCourses = filteredCourses.sort((a, b) => {
@@ -97,7 +107,7 @@ export default function CourseSearch() {
 
     setFilteredList(filteredCourses);
   }, [
-    query,
+    search,
     selectedModality,
     showLabCourses,
     showNoPrerequisites,
@@ -105,6 +115,7 @@ export default function CourseSearch() {
     selectedDepartment,
     selectedDegreeRequirement,
     selectedCreditHours,
+    selectedCourseLevel,
     sortKey,
     sortOrder
   ]);
@@ -165,6 +176,8 @@ export default function CourseSearch() {
         setSelectedDegreeRequirement={setSelectedDegreeRequirement}
         selectedCreditHours={selectedCreditHours}
         setSelectedCreditHours={setSelectedCreditHours}
+        selectedCourseLevel={selectedCourseLevel}
+        setSelectedCourseLevel={setSelectedCourseLevel}
         showLabCourses={showLabCourses}
         setShowLabCourses={setShowLabCourses}
         showNoPrerequisites={showNoPrerequisites}
