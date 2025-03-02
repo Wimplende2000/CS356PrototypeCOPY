@@ -1,3 +1,50 @@
 .course-box:hover {
     background-color: rgb(240, 239, 245);
   }
+
+
+  
+.selected-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.filter-pill {
+  display: flex;
+  align-items: center;
+  background-color: #f1f1f1;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 10px;
+}
+
+.pill-close {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 10px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.pill-close:hover {
+  color: rgb(168, 16, 16);
+}
+
+.below-search-bar {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sort-by {
+  align-self: flex-end;
+  margin-left: 15px;
+}
+
+hr {
+  color: rgb(73, 72, 5);
+}

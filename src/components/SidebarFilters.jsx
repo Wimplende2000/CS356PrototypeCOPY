@@ -1,6 +1,5 @@
 
-import React, { useEffect, useRef, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import "../styleFiles/sidebarFilters.css";
 
 
@@ -22,7 +21,6 @@ export default function SidebarFilters({
   showNoPrerequisites,
   setShowNoPrerequisites,
 }) {
-  const navigate = useNavigate();
   const [modalityOpen, setModalityOpen] = useState(false);
   const [semesterOpen, setSemesterOpen] = useState(false);
   const [creditHoursOpen, setCreditHoursOpen] = useState(false);
@@ -72,7 +70,6 @@ export default function SidebarFilters({
       setSelectedValues([...selectedValues, value]);
     }
   };
-
 
   return (
     <div className="filter-box">
