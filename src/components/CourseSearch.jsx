@@ -6,6 +6,8 @@ import SearchBar from "./SearchBar";
 import { useCourseDataContext } from "../contextsGLOBAL/courseDataContext";
 import courseData from "../contextsGLOBAL/courseData";
 import "../styleFiles/courseSearch.css";
+import { Pagination,TablePagination } from '@mui/material';
+
 
 // Define the addButtonStyle for the "Add Course" button
 const addButtonStyle = {
@@ -47,6 +49,9 @@ const sectionItemStyle = {
 };
 
 export default function CourseSearch() {
+  //for pagination
+  const [page, setPage] = useState(1);
+  const [rowsPerPage, setRowsPerPage] = useState(12); // Adjust based on your grid layout
   const { filteredList, setFilteredList } = useCourseDataContext();
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [searchParams] = useSearchParams();
@@ -67,7 +72,7 @@ export default function CourseSearch() {
   const [showPanel, setShowPanel] = useState(false);
   const navigate = useNavigate();
 
-  useEffect(() => {
+/*   useEffect(() => {
 
     courseData.forEach(course => {
       const firstDigit = course.code.match(/\d/)[0];
@@ -118,6 +123,64 @@ export default function CourseSearch() {
     selectedCourseLevel,
     sortKey,
     sortOrder
+  ]);
+ */
+
+  useEffect(() => {
+    courseData.forEach(course => {
+      const firstDigit = course.code.match(/\d/)[0];
+      course.courseLevel = `${firstDigit}00 Level`;
+    });
+  
+    let filteredCourses = courseData.filter(course =>
+      (search === "" || course.title.toLowerCase().includes(search.toLowerCase()) ||
+      course.code.toLowerCase().includes(search.toLowerCase()) ||
+      course.department.toLowerCase().includes(search.toLowerCase())) &&
+      (selectedModality.length === 0 || selectedModality.includes(course.modality)) &&
+      (!showLabCourses || course.hasLab) &&
+      (!showNoPrerequisites || course.prerequisites.length === 0) &&
+      (selectedSemester.length === 0 || selectedSemester.includes(course.semester)) &&
+      (selectedDepartment.length === 0 || selectedDepartment.includes(course.department)) &&
+      (selectedDegreeRequirement.length === 0 || selectedDegreeRequirement.includes(course.degreeRequirement)) &&
+      (selectedCreditHours.length === 0 || selectedCreditHours.includes(course.creditHours)) &&
+      (selectedCourseLevel.length === 0 || selectedCourseLevel.includes(course.courseLevel)) &&
+      (selectedFilters.length === 0 || selectedFilters.every(filter => course.tags.includes(filter)))
+    );    
+  
+    if (sortKey) {
+      filteredCourses = filteredCourses.sort((a, b) => {
+        let comparison = 0;
+        const valueA = String(a[sortKey]).toUpperCase();
+        const valueB = String(b[sortKey]).toUpperCase();
+  
+        if (valueA < valueB) {
+          comparison = -1;
+        } else if (valueA > valueB) {
+          comparison = 1;
+        }
+  
+        return sortOrder === "asc" ? comparison : -comparison;
+      });
+    }
+  
+    // Add pagination
+    const startIndex = (page - 1) * rowsPerPage;
+    const paginatedCourses = filteredCourses.slice(startIndex, startIndex + rowsPerPage);
+    setFilteredList(paginatedCourses);
+  }, [
+    search,
+    selectedModality,
+    showLabCourses,
+    showNoPrerequisites,
+    selectedSemester,
+    selectedDepartment,
+    selectedDegreeRequirement,
+    selectedCreditHours,
+    selectedCourseLevel,
+    sortKey,
+    sortOrder,
+    page,
+    rowsPerPage
   ]);
 
   const handleSortChange = (key, order) => {
@@ -187,7 +250,7 @@ export default function CourseSearch() {
       <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
         <SearchBar onSearch={setSearch} />
         <SortCourses onSortChange={handleSortChange} />
-
+        
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
           {filteredList.length > 0 ? (
             filteredList.map((course, index) => (

@@ -67,7 +67,7 @@ export default function SidebarFilters({
 
   const handleCheckboxChange = (value, selectedValues, setSelectedValues) => {
     if (selectedValues.includes(value)) {
-      setSelectedValues(selectedValues.filter((v) => v != value));
+      setSelectedValues(selectedValues.filter((v) => v !== value));
     } else {
       setSelectedValues([...selectedValues, value]);
     }

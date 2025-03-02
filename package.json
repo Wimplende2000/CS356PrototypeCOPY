@@ -3,6 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.6",
+    "@mui/material": "^6.4.6",
     "cra-template": "1.2.0",
     "fuse.js": "^7.1.0",
     "react": "^19.0.0",
@@ -13,7 +17,7 @@
     "web-vitals": "^4.2.4"
   },
   "devDependencies": {
-  "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   },
   "scripts": {
     "start": "react-scripts start",
