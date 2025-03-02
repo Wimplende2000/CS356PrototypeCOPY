@@ -201,8 +201,8 @@ export default function CourseSearch() {
       <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
         <SearchBar onSearch={setSearch} />
         <SortCourses onSortChange={handleSortChange} />
-      
-       
+
+        <div style={{ display: 'flex', justifyContent: 'center', margin: '20px 0' }}>
         <Pagination
         count={Math.ceil(filteredList.length / rowsPerPage)} // Use filteredList.length instead of courseData.length
         page={page}
@@ -210,7 +210,8 @@ export default function CourseSearch() {
         siblingCount={1}
         boundaryCount={1}
       />
-      
+      </div>
+ 
 
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
           {
