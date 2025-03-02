@@ -1,9 +1,4 @@
 /* Overall container for the search bar and history */
-.search-container {
-  width: 100%;
-}
-
-/* Wrapper to contain the input (with its reset button) and the dropdown */
 .search-box-wrapper {
   position: relative;
   width: 100%;
@@ -12,7 +7,7 @@
 /* Container for the input and reset button */
 .search-box {
   position: relative;
-  width: 100%;
+  width: 100%;  
 }
 
 /* Style for the search input */
@@ -20,7 +15,10 @@
   width: 100%;
   padding: 8px 12px;
   font-size: 16px;
+  border: 1px solid #ddd;
   box-sizing: border-box;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* Reset (X) button is absolutely positioned within the search box */
@@ -32,7 +30,7 @@
   background: none;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 12px;
 }
 
 .reset-search:hover {

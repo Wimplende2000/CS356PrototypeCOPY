@@ -7,6 +7,12 @@
   max-height: fit-content;
 }
 
+hr {
+  border: none; 
+  height: 1px; 
+  background-color: rgb(230, 232, 236); 
+}
+
 .filter-header {
   display: flex;
   flex-direction: row;

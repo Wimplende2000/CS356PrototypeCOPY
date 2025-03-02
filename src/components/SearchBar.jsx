@@ -55,7 +55,6 @@ export default function SearchBar({ onSearch }) {
   };
 
   return (
-    <div className="search-container">
       <div className="search-box-wrapper">
         <div className="search-box">
           <input
@@ -96,6 +95,5 @@ export default function SearchBar({ onSearch }) {
           </div>
         )}
       </div>
-    </div>
   );
 }
