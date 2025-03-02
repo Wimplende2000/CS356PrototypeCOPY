@@ -51,7 +51,7 @@ const sectionItemStyle = {
 export default function CourseSearch() {
   //for pagination
   const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(12); // Adjust based on your grid layout
+  const [rowsPerPage, setRowsPerPage] = useState(15); // Adjust based on your grid layout
   const { filteredList, setFilteredList } = useCourseDataContext();
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [searchParams] = useSearchParams();
@@ -72,13 +72,13 @@ export default function CourseSearch() {
   const [showPanel, setShowPanel] = useState(false);
   const navigate = useNavigate();
 
-/*   useEffect(() => {
-
+  useEffect(() => {
+    setFilteredList(courseData);
     courseData.forEach(course => {
       const firstDigit = course.code.match(/\d/)[0];
       course.courseLevel = `${firstDigit}00 Level`;
     });
-
+  
     let filteredCourses = courseData.filter(course =>
       (search === "" || course.title.toLowerCase().includes(search.toLowerCase()) ||
       course.code.toLowerCase().includes(search.toLowerCase()) ||
@@ -92,24 +92,30 @@ export default function CourseSearch() {
       (selectedCreditHours.length === 0 || selectedCreditHours.includes(course.creditHours)) &&
       (selectedCourseLevel.length === 0 || selectedCourseLevel.includes(course.courseLevel)) &&
       (selectedFilters.length === 0 || selectedFilters.every(filter => course.tags.includes(filter)))
-    );    
-
+    );
+  
     if (sortKey) {
       filteredCourses = filteredCourses.sort((a, b) => {
         let comparison = 0;
         const valueA = String(a[sortKey]).toUpperCase();
         const valueB = String(b[sortKey]).toUpperCase();
-
+  
         if (valueA < valueB) {
           comparison = -1;
         } else if (valueA > valueB) {
           comparison = 1;
         }
-
+  
         return sortOrder === "asc" ? comparison : -comparison;
       });
     }
-
+  
+    // Ensure pagination is within valid range
+    const totalPages = Math.ceil(filteredCourses.length / rowsPerPage);
+    if (page > totalPages && totalPages > 0) {
+      setPage(totalPages);
+    }
+  
     setFilteredList(filteredCourses);
   }, [
     search,
@@ -124,65 +130,10 @@ export default function CourseSearch() {
     sortKey,
     sortOrder
   ]);
- */
-
-  useEffect(() => {
-    courseData.forEach(course => {
-      const firstDigit = course.code.match(/\d/)[0];
-      course.courseLevel = `${firstDigit}00 Level`;
-    });
   
-    let filteredCourses = courseData.filter(course =>
-      (search === "" || course.title.toLowerCase().includes(search.toLowerCase()) ||
-      course.code.toLowerCase().includes(search.toLowerCase()) ||
-      course.department.toLowerCase().includes(search.toLowerCase())) &&
-      (selectedModality.length === 0 || selectedModality.includes(course.modality)) &&
-      (!showLabCourses || course.hasLab) &&
-      (!showNoPrerequisites || course.prerequisites.length === 0) &&
-      (selectedSemester.length === 0 || selectedSemester.includes(course.semester)) &&
-      (selectedDepartment.length === 0 || selectedDepartment.includes(course.department)) &&
-      (selectedDegreeRequirement.length === 0 || selectedDegreeRequirement.includes(course.degreeRequirement)) &&
-      (selectedCreditHours.length === 0 || selectedCreditHours.includes(course.creditHours)) &&
-      (selectedCourseLevel.length === 0 || selectedCourseLevel.includes(course.courseLevel)) &&
-      (selectedFilters.length === 0 || selectedFilters.every(filter => course.tags.includes(filter)))
-    );    
+  // Paginated courses computed separately
+  const paginatedCourses = filteredList.slice((page - 1) * rowsPerPage, page * rowsPerPage);
   
-    if (sortKey) {
-      filteredCourses = filteredCourses.sort((a, b) => {
-        let comparison = 0;
-        const valueA = String(a[sortKey]).toUpperCase();
-        const valueB = String(b[sortKey]).toUpperCase();
-  
-        if (valueA < valueB) {
-          comparison = -1;
-        } else if (valueA > valueB) {
-          comparison = 1;
-        }
-  
-        return sortOrder === "asc" ? comparison : -comparison;
-      });
-    }
-  
-    // Add pagination
-    const startIndex = (page - 1) * rowsPerPage;
-    const paginatedCourses = filteredCourses.slice(startIndex, startIndex + rowsPerPage);
-    setFilteredList(paginatedCourses);
-  }, [
-    search,
-    selectedModality,
-    showLabCourses,
-    showNoPrerequisites,
-    selectedSemester,
-    selectedDepartment,
-    selectedDegreeRequirement,
-    selectedCreditHours,
-    selectedCourseLevel,
-    sortKey,
-    sortOrder,
-    page,
-    rowsPerPage
-  ]);
-
   const handleSortChange = (key, order) => {
     setSortKey(key);
     setSortOrder(order);
@@ -250,10 +201,21 @@ export default function CourseSearch() {
       <div style={{ width: "100%", padding: "10px", borderRadius: "4px", marginBottom: "20px" }}>
         <SearchBar onSearch={setSearch} />
         <SortCourses onSortChange={handleSortChange} />
-        
+      
+       
+        <Pagination
+        count={Math.ceil(filteredList.length / rowsPerPage)} // Use filteredList.length instead of courseData.length
+        page={page}
+        onChange={(event, value) => setPage(value)}
+        siblingCount={1}
+        boundaryCount={1}
+      />
+      
+
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
-          {filteredList.length > 0 ? (
-            filteredList.map((course, index) => (
+          {
+            paginatedCourses.length > 0 ? (
+            paginatedCourses.map((course, index) => (
               <div key={index} 
                 className="course-box"
                 style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"}}
@@ -290,6 +252,7 @@ export default function CourseSearch() {
             <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>{selectedCourse.code}</p>
             <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Instructor: {selectedCourse.instructor}</p>
             <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Semester: {selectedCourse.semester}</p>
+            <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Credit Hours: {selectedCourse.creditHours}</p>
             <p style={{ color: "#555", fontSize: "14px", marginBottom: "5px" }}>Degree Requirement: {selectedCourse.degreeRequirement}</p>
           </div>
 

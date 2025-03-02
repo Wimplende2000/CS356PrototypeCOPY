@@ -163,7 +163,7 @@ export default function SidebarFilters({
         </button>
         {creditHoursOpen && (
         <div className="filter-type">
-          {["1 Hour", "2 Hours", "3 Hours", "4 Hours", "5 Hours"].map((creditHours) => (
+          {[1,2,3,4, 5].map((creditHours) => (
             <label key={creditHours} className="dropdown-items">
               <input
                 type="checkbox"
