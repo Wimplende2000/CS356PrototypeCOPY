@@ -9,49 +9,10 @@ import "../styleFiles/courseSearch.css";
 import { Pagination,TablePagination } from '@mui/material';
 
 
-// Define the addButtonStyle for the "Add Course" button
-const addButtonStyle = {
-  marginTop: "10px",
-  padding: "8px 16px",
-  backgroundColor: "#28a745",
-  color: "#fff",
-  border: "none",
-  borderRadius: "4px",
-  cursor: "pointer",
-  fontSize: "14px",
-  fontWeight: "bold",
-  transition: "background-color 0.3s ease",
-  width: "100%", // Make the button full width
-  display: "block", // Ensure the button is on a new line
-};
-
-const sidePanelStyle = {
-  position: "fixed",
-  top: 0,
-  right: 0,
-  width: "450px", // Increased width for more space
-  height: "100%",
-  backgroundColor: "#fff",
-  boxShadow: "-2px 0 15px rgba(0, 0, 0, 0.1)",
-  padding: "20px",
-  overflowY: "auto",
-  zIndex: 1000,
-  transform: "translateX(0)",
-  transition: "transform 0.3s ease-in-out",
-};
-
-const sectionItemStyle = {
-  marginBottom: "15px",
-  padding: "15px",
-  border: "1px solid #ddd",
-  borderRadius: "8px",
-  backgroundColor: "#f9f9f9",
-};
-
 export default function CourseSearch() {
   //for pagination
   const [page, setPage] = useState(1);
-  const [rowsPerPage, setRowsPerPage] = useState(15); // Adjust based on your grid layout
+  const [rowsPerPage, setRowsPerPage] = useState(16); // Adjust based on your grid layout
   const { filteredList, setFilteredList } = useCourseDataContext();
   const [selectedFilters, setSelectedFilters] = useState([]);
   const [searchParams] = useSearchParams();
@@ -295,37 +256,36 @@ export default function CourseSearch() {
       </div>
  
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
-          {
+      <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", rowGap: "30px" }}>
+      {
             paginatedCourses.length > 0 ? (
             paginatedCourses.map((course, index) => (
               <div key={index} 
                 className="course-box"
-                style={{ padding: "15px", border: "1px solid #ddd", borderRadius: "8px", boxShadow: "0 2px 8px rgba(0, 0, 0, 0.1)"}}
                 onClick={() => openSidePanel(course.code)}
               >
-                <p style={{ fontSize: "12px", color: "#777", marginBottom: "5px" }}>{course.modality}</p>
-                <h2 style={{ fontSize: "16px", margin: "5px 0", color: "#002E5D", fontWeight: "bold" }}>{course.title}</h2>
-                <p style={{ fontWeight: "bold", color: "#555", marginBottom: "5px" }}>{course.code}</p>
-                {course.hasLab && <p style={{ color: "red", fontSize: "12px", marginBottom: "5px" }}>Lab Required</p>}
+                <p className="code">{course.code}</p>
+                {course.hasLab && <p className="has-lab">Lab Required</p>}
+                <p className="title">{course.title}</p>
+                <p className="department">{course.department}</p>
+                <p className="requirement">{course.degreeRequirement}</p>
                 {course.prerequisites.length > 0 && (
-                  <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>
+                  <p className="prereqs">
                     Prerequisites: {course.prerequisites.join(", ")}
                   </p>
                 )}
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.semester}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>{course.department}</p>
-                <p style={{ color: "#555", fontSize: "12px", marginBottom: "5px" }}>Degree Requirement: {course.degreeRequirement}</p>
+                <p className="modality">{course.modality}</p>
+                <p className="semester">{course.semester}</p>
               </div>
             ))
           ) : (
-            <p style={{ textAlign: "center", color: "#777", fontSize: "14px" }}>No courses found.</p>
+            <p className="no-courses">No courses found.</p>
           )}
         </div>
       </div>
 
       {showPanel && selectedCourse && (
-        <div style={sidePanelStyle}>
+        <div className="side-panel">
           <button onClick={closeSidePanel} style={{
             backgroundColor: "#FF6347", border: "none", color: "#fff", fontSize: "16px", padding: "10px", borderRadius: "5px", cursor: "pointer", marginBottom: "20px"
           }}>Close</button>
@@ -344,11 +304,11 @@ export default function CourseSearch() {
               <p style={{ fontWeight: "bold", marginBottom: "10px" }}>Sections:</p>
               <ul style={{ listStyle: "none", padding: 0 }}>
                 {selectedCourse.sections.map((section, secIndex) => (
-                  <li key={secIndex} style={sectionItemStyle}>
+                  <li key={secIndex} className="section-item">
                     <div>
                       <strong>Section {section.sectionNumber}:</strong> {section.professor} - {section.time}
                     </div>
-                    <button onClick={() => handleAddSection(selectedCourse, section)} style={addButtonStyle}>
+                    <button onClick={() => handleAddSection(selectedCourse, section)} className="add-course-button">
                       Add Course
                     </button>
                   </li>

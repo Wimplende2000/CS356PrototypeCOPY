@@ -45,6 +45,136 @@
   margin-left: 15px;
 }
 
-hr {
-  color: rgb(73, 72, 5);
+.add-course-button {
+  margin-top: 10px;
+  padding: 8px 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  display: block;
+}
+
+.course-box {
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+  justify-items: start;
+  background-color: #fff;
+  width: 180px;
+  max-width: 100%;
+  row-gap: 0;
+
+  .code {
+    grid-column: 1;
+    font-weight: bolder;
+    text-align: start;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 5;
+  }
+  .title{
+    grid-column: span 2;
+    font-weight: bold;
+    font-size: 14px;
+    margin-bottom: 10px;
+    margin-top: 0;
+    margin-bottom: 5;
+  }
+  .modality {
+    padding: 8px 10px;
+    border: 1px solid rgb(108, 146, 98);
+    border-radius: 8px;
+    background-color: rgb(147, 199, 134);
+    text-align: center;
+    justify-self: baseline;
+    font-size: 12px;
+    margin-top: 2px;
+    margin-bottom: 0px;
+  }
+  .has-lab {
+    grid-column: 2;
+    color: rgb(231, 87, 87);
+    font-weight: bolder;
+    font-size: 14px;
+    justify-self: end;
+    margin: 0;
+  }
+  .prereqs {
+    grid-column: span 2;
+    font-size: 12px;
+    margin-top: 0;
+    margin-bottom: 5;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  }
+  .semester {
+    grid-column: 2;
+    padding: 8px 10px;
+    border: 1px solid rgb(98, 109, 146);
+    border-radius: 8px;
+    background-color: rgb(134, 197, 199);
+    text-align: center;
+    justify-self: end;
+    font-size: 12px;
+    margin-bottom: 0;
+    margin-top: 2px;
+  }
+  .department,
+  .requirement {
+    grid-column: span 2;
+    font-size: 12px;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin-top: 0;
+    margin-bottom: 5;
+  }
+  .no-courses {
+    text-align: center;
+    color: #777;
+    font-size: 14px;
+    grid-column: 1;
+    margin-top: 10px;
+  }
+}
+
+/* Side Panel */
+.side-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 40%;
+  max-width: 300px;
+  height: 100%;
+  background-color: #fff;
+  box-shadow: -2px 0 15px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  overflow-y: auto;
+  z-index: 1000;
+  transform: translateX(0);
+  transition: transform 0.3s ease-in-out;
+}
+
+/* Section Items */
+.section-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Main Container */
+.course-search-container {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  font-family: Arial, sans-serif;
 }

@@ -136,7 +136,7 @@ export default function SidebarFilters({
         </button>
         {semesterOpen && (
         <div className="filter-type">
-          {["Fall/Winter", "Fall 2023", "Winter 2024", "Spring 2024", "Fall 2024", "Winter 2025", "Spring 2025"].map((semester) => (
+          {["Fall/Winter", "Fall", "Winter", "Spring", "Ongoing", "Varies"].map((semester) => (
             <label key={semester} className="dropdown-items">
               <input
                 type="checkbox"

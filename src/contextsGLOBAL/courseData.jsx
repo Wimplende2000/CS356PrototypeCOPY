@@ -6,7 +6,7 @@ const courseData = [
       "modality": "Online",
       "hasLab": true,
       "prerequisites": [],
-      "semester": "Fall 2023",
+      "semester": "Fall",
       "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Smith",
@@ -35,7 +35,7 @@ const courseData = [
       "hasLab": true,
       "prerequisites": [],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Anderson",
       "officeHours": "Tue/Thu 10-11 AM",
@@ -64,7 +64,7 @@ const courseData = [
         "CS110"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Chen",
       "officeHours": "Wed/Fri 1-2 PM",
@@ -91,7 +91,7 @@ const courseData = [
       "hasLab": false,
       "prerequisites": [],
       "semester": "Flexible",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Davis",
       "officeHours": "By Appointment",
@@ -119,8 +119,8 @@ const courseData = [
       "prerequisites": [
         "MATH 121"
       ],
-      "semester": "Winter 2024",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Wilson",
       "officeHours": "Mon/Wed 3-4 PM",
@@ -149,7 +149,7 @@ const courseData = [
         "Department Approval"
       ],
       "semester": "Ongoing",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Internship Coordinator",
       "officeHours": "Contact Coordinator",
@@ -169,8 +169,8 @@ const courseData = [
       "modality": "In-Person",
       "hasLab": false,
       "prerequisites": [],
-      "semester": "Fall 2024",
-      "department": "CS",
+      "semester": "Fall",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Visiting Professor",
       "officeHours": "TBA",
@@ -196,7 +196,7 @@ const courseData = [
       "hasLab": false,
       "prerequisites": [],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "General Education",
       "instructor": "Dr. Green",
       "officeHours": "Wed 9-10 AM",
@@ -224,7 +224,7 @@ const courseData = [
         "CS111"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Hill",
       "officeHours": "Mon/Fri 11 AM - 12 PM",
@@ -252,7 +252,7 @@ const courseData = [
         "CS202"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Jones",
       "officeHours": "Tue/Thu 2-3 PM",
@@ -280,7 +280,7 @@ const courseData = [
         "CS203"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. King",
       "officeHours": "Wed/Fri 10-11 AM",
@@ -308,7 +308,7 @@ const courseData = [
         "CS111"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Lee",
       "officeHours": "Mon/Wed 1-2 PM",
@@ -337,7 +337,7 @@ const courseData = [
         "CS111"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Martinez",
       "officeHours": "Tue/Thu 3-4 PM",
@@ -366,7 +366,7 @@ const courseData = [
         "MATH 110"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Nguyen",
       "officeHours": "Mon/Wed 10-11 AM",
@@ -396,7 +396,7 @@ const courseData = [
         "CS240"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Patel",
       "officeHours": "Tue/Thu 1-2 PM",
@@ -425,7 +425,7 @@ const courseData = [
         "CS236"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Ramirez",
       "officeHours": "Wed/Fri 2-3 PM",
@@ -454,7 +454,7 @@ const courseData = [
         "CS111"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Sharma",
       "officeHours": "Mon/Wed 4-5 PM",
@@ -483,7 +483,7 @@ const courseData = [
         "CS240"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Thompson",
       "officeHours": "Tue/Thu 9-10 AM (Online)",
@@ -513,7 +513,7 @@ const courseData = [
         "MATH 221"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Vargas",
       "officeHours": "Mon/Wed 2-3 PM",
@@ -540,7 +540,7 @@ const courseData = [
       "hasLab": false,
       "prerequisites": [],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Career Services Staff",
       "officeHours": "Varies",
@@ -562,8 +562,8 @@ const courseData = [
       "prerequisites": [
         "Varies by topic"
       ],
-      "semester": "Fall 2024",
-      "department": "CS",
+      "semester": "Fall",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Adjunct Faculty",
       "officeHours": "TBA",
@@ -592,7 +592,7 @@ const courseData = [
         "CS236"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. White",
       "officeHours": "Tue/Thu 11 AM - 12 PM",
@@ -621,7 +621,7 @@ const courseData = [
         "CS224"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Young",
       "officeHours": "Mon/Wed 9-10 AM",
@@ -651,7 +651,7 @@ const courseData = [
         "CS235"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Zheng",
       "officeHours": "Tue/Thu 4-5 PM",
@@ -680,7 +680,7 @@ const courseData = [
         "CS235"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Adams",
       "officeHours": "Wed/Fri 1-2 PM",
@@ -709,7 +709,7 @@ const courseData = [
         "CS240"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Baker",
       "officeHours": "Mon/Wed 11 AM - 12 PM",
@@ -738,7 +738,7 @@ const courseData = [
         "CS324"
       ],
       "semester": "Flexible",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Clark",
       "officeHours": "By Appointment",
@@ -766,8 +766,8 @@ const courseData = [
       "prerequisites": [
         "MATH 221"
       ],
-      "semester": "Fall 2024",
-      "department": "CS",
+      "semester": "Fall",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Evans",
       "officeHours": "Tue/Thu 2-3 PM",
@@ -797,7 +797,7 @@ const courseData = [
         "CS260"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Foster",
       "officeHours": "Wed/Fri 11 AM - 12 PM",
@@ -826,7 +826,7 @@ const courseData = [
         "CS312"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Garcia",
       "officeHours": "Mon/Wed 3-4 PM",
@@ -853,8 +853,8 @@ const courseData = [
       "prerequisites": [
         "Varies by topic"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Industry Expert",
       "officeHours": "Online - TBA",
@@ -880,7 +880,7 @@ const courseData = [
       "hasLab": false,
       "prerequisites": [],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "General Education",
       "instructor": "Dr. Hall",
       "officeHours": "Tue/Thu 10-11 AM",
@@ -908,7 +908,7 @@ const courseData = [
         "Business Minor Recommended"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Ingram (Business School)",
       "officeHours": "Wed/Fri 2-3 PM",
@@ -937,7 +937,7 @@ const courseData = [
         "CS235"
       ],
       "semester": "Flexible",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Johnson",
       "officeHours": "By Appointment",
@@ -967,7 +967,7 @@ const courseData = [
         "CS329"
       ],
       "semester": "Flexible",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Prof. Klein",
       "officeHours": "By Appointment",
@@ -996,7 +996,7 @@ const courseData = [
         "CS252"
       ],
       "semester": "Flexible",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Lewis",
       "officeHours": "By Appointment",
@@ -1025,8 +1025,8 @@ const courseData = [
         "CS270",
         "MATH 221"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Miller",
       "officeHours": "Tue/Thu 1-2 PM",
@@ -1055,7 +1055,7 @@ const courseData = [
         "CS235"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Nelson",
       "officeHours": "Wed/Fri 10-11 AM",
@@ -1084,8 +1084,8 @@ const courseData = [
         "CS235",
         "MATH 121"
       ],
-      "semester": "Spring 2024",
-      "department": "CS",
+      "semester": "Spring",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Olson",
       "officeHours": "Mon/Wed 1-2 PM",
@@ -1113,8 +1113,8 @@ const courseData = [
       "prerequisites": [
         "CS355"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Parker",
       "officeHours": "Tue/Thu 3-4 PM",
@@ -1142,8 +1142,8 @@ const courseData = [
         "CS256",
         "CS260"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Quinn",
       "officeHours": "Wed/Fri 4-5 PM",
@@ -1171,7 +1171,7 @@ const courseData = [
         "CS224"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Roberts",
       "officeHours": "Mon/Wed 10-11 AM",
@@ -1201,7 +1201,7 @@ const courseData = [
         "CS260"
       ],
       "semester": "Flexible",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Scott",
       "officeHours": "By Appointment",
@@ -1230,7 +1230,7 @@ const courseData = [
         "MATH 231"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Taylor",
       "officeHours": "Tue/Thu 11 AM - 12 PM",
@@ -1259,8 +1259,8 @@ const courseData = [
         "CS260",
         "CS465"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Underwood",
       "officeHours": "Wed/Fri 1-2 PM",
@@ -1289,7 +1289,7 @@ const courseData = [
         "MATH 221"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Dr. Vance",
       "officeHours": "Mon/Wed 2-3 PM",
@@ -1318,8 +1318,8 @@ const courseData = [
         "CS256",
         "CS270"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Washington",
       "officeHours": "Tue/Thu 4-5 PM",
@@ -1348,7 +1348,7 @@ const courseData = [
         "MATH 321"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Xavier",
       "officeHours": "Wed/Fri 10-11 AM",
@@ -1378,7 +1378,7 @@ const courseData = [
         "CS355"
       ],
       "semester": "Fall/Winter",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Prof. Yates",
       "officeHours": "Mon/Wed 4-5 PM",
@@ -1407,7 +1407,7 @@ const courseData = [
         "Department Approval"
       ],
       "semester": "Varies",
-      "department": "CS",
+      "department": "Computer Science",
       "degreeRequirement": "Minor Requirement",
       "instructor": "Education Faculty Supervisor",
       "officeHours": "Contact Supervisor",
@@ -1430,8 +1430,8 @@ const courseData = [
         "CS470",
         "LING 201"
       ],
-      "semester": "Fall 2024",
-      "department": "CS",
+      "semester": "Fall",
+      "department": "Computer Science",
       "degreeRequirement": "Elective",
       "instructor": "Dr. Zimmerman",
       "officeHours": "Tue/Thu 9-10 AM",
@@ -1458,8 +1458,8 @@ const courseData = [
       "prerequisites": [
         "Senior Standing in CS"
       ],
-      "semester": "Fall 2024",
-      "department": "CS",
+      "semester": "Fall",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Capstone Faculty Advisor",
       "officeHours": "Team-Based",
@@ -1486,8 +1486,8 @@ const courseData = [
       "prerequisites": [
         "CS480"
       ],
-      "semester": "Winter 2025",
-      "department": "CS",
+      "semester": "Winter",
+      "department": "Computer Science",
       "degreeRequirement": "Major Requirement",
       "instructor": "Capstone Faculty Advisor",
       "officeHours": "Team-Based",
