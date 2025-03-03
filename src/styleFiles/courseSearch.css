@@ -92,9 +92,9 @@
   }
   .modality {
     padding: 8px 10px;
-    border: 1px solid rgb(108, 146, 98);
+    border: 1px solid rgb(163, 150, 92);
     border-radius: 8px;
-    background-color: rgb(147, 199, 134);
+    background-color: #e4daa1;
     text-align: center;
     justify-self: baseline;
     font-size: 12px;
@@ -119,9 +119,9 @@
   .semester {
     grid-column: 2;
     padding: 8px 10px;
-    border: 1px solid rgb(98, 109, 146);
+    border: 1px solid rgb(163, 150, 92);
     border-radius: 8px;
-    background-color: rgb(134, 197, 199);
+    background-color: #e4daa1;
     text-align: center;
     justify-self: end;
     font-size: 12px;
