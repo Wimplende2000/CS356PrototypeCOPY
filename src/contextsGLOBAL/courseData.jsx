@@ -1500,6 +1500,206 @@ const courseData = [
         }
       ],
       "creditHours": 2
+    },
+    {
+      "title": "Calculus I",
+      "code": "MATH101",
+      "modality": "In-Person",
+      "hasLab": false,
+      "prerequisites": [],
+      "semester": "Fall",
+      "department": "Mathematics",
+      "degreeRequirement": "General Education",
+      "instructor": "Dr. Johnson",
+      "officeHours": "Mon/Wed 3-4 PM",
+      "syllabus": "calculus_syllabus.pdf",
+      "textbook": "Calculus: Early Transcendentals",
+      "gradingPolicy": "Standard",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Dr. Johnson",
+          "time": "MWF 8:00 AM - 9:00 AM"
+        },
+        {
+          "sectionNumber": "002",
+          "professor": "Dr. Patel",
+          "time": "TTh 10:30 AM - 12:00 PM"
+        }
+      ],
+      "creditHours": 4
+    },
+    {
+      "title": "Linear Algebra",
+      "code": "MATH210",
+      "modality": "Online",
+      "hasLab": false,
+      "prerequisites": ["MATH101"],
+      "semester": "Spring",
+      "department": "Mathematics",
+      "degreeRequirement": "Major Requirement",
+      "instructor": "Prof. Kim",
+      "officeHours": "Fri 1-3 PM",
+      "textbook": "Linear Algebra and Its Applications",
+      "gradingPolicy": "Weighted",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Prof. Kim",
+          "time": "MWF 11:00 AM - 12:00 PM"
+        }
+      ],
+      "creditHours": 3
+    },
+    {
+      "title": "English Composition",
+      "code": "ENG101",
+      "modality": "In-Person",
+      "hasLab": false,
+      "prerequisites": [],
+      "semester": "Fall",
+      "department": "English",
+      "degreeRequirement": "General Education",
+      "instructor": "Dr. Williams",
+      "officeHours": "Tue/Thu 2-3 PM",
+      "syllabus": "eng_comp_syllabus.pdf",
+      "textbook": "The Elements of Writing",
+      "gradingPolicy": "Standard",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Dr. Williams",
+          "time": "MWF 9:00 AM - 10:00 AM"
+        },
+        {
+          "sectionNumber": "002",
+          "professor": "Dr. Taylor",
+          "time": "TTh 1:00 PM - 2:30 PM"
+        }
+      ],
+      "creditHours": 3
+    },
+    {
+      "title": "Shakespearean Literature",
+      "code": "ENG220",
+      "modality": "Online",
+      "hasLab": false,
+      "prerequisites": ["ENG101"],
+      "semester": "Spring",
+      "department": "English",
+      "degreeRequirement": "Elective",
+      "instructor": "Prof. Carter",
+      "officeHours": "Wed 10-11 AM",
+      "textbook": "The Complete Works of Shakespeare",
+      "gradingPolicy": "Essay-Based",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Prof. Carter",
+          "time": "Asynchronous"
+        }
+      ],
+      "creditHours": 3
+    },
+    {
+      "title": "Probability and Statistics",
+      "code": "MATH220",
+      "modality": "In-Person",
+      "hasLab": false,
+      "prerequisites": ["MATH101"],
+      "semester": "Fall",
+      "department": "Mathematics",
+      "degreeRequirement": "Major Requirement",
+      "instructor": "Dr. Nguyen",
+      "officeHours": "Mon/Wed 11 AM - 12 PM",
+      "syllabus": "prob_stats_syllabus.pdf",
+      "textbook": "Introduction to Probability and Statistics",
+      "gradingPolicy": "Weighted",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Dr. Nguyen",
+          "time": "MWF 2:00 PM - 3:00 PM"
+        },
+        {
+          "sectionNumber": "002",
+          "professor": "Dr. Clark",
+          "time": "TTh 9:00 AM - 10:30 AM"
+        }
+      ],
+      "creditHours": 3
+    },
+    {
+      "title": "Discrete Mathematics",
+      "code": "MATH230",
+      "modality": "Online",
+      "hasLab": false,
+      "prerequisites": ["MATH101"],
+      "semester": "Spring",
+      "department": "Mathematics",
+      "degreeRequirement": "Major Requirement",
+      "instructor": "Prof. Hernandez",
+      "officeHours": "Tue/Thu 1-2 PM",
+      "textbook": "Discrete Mathematics and Its Applications",
+      "gradingPolicy": "Standard",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Prof. Hernandez",
+          "time": "MWF 10:00 AM - 11:00 AM"
+        }
+      ],
+      "creditHours": 3
+    },
+    {
+      "title": "Modern Poetry",
+      "code": "ENG250",
+      "modality": "In-Person",
+      "hasLab": false,
+      "prerequisites": ["ENG101"],
+      "semester": "Fall",
+      "department": "English",
+      "degreeRequirement": "Elective",
+      "instructor": "Dr. Roberts",
+      "officeHours": "Wed 3-4 PM",
+      "syllabus": "modern_poetry_syllabus.pdf",
+      "textbook": "The Norton Anthology of Modern Poetry",
+      "gradingPolicy": "Essay-Based",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Dr. Roberts",
+          "time": "MWF 1:00 PM - 2:00 PM"
+        },
+        {
+          "sectionNumber": "002",
+          "professor": "Dr. Evans",
+          "time": "TTh 10:00 AM - 11:30 AM"
+        }
+      ],
+      "creditHours": 3
+    },
+    {
+      "title": "Creative Writing",
+      "code": "ENG275",
+      "modality": "Online",
+      "hasLab": false,
+      "prerequisites": ["ENG101"],
+      "semester": "Spring",
+      "department": "English",
+      "degreeRequirement": "Elective",
+      "instructor": "Prof. Martinez",
+      "officeHours": "Mon 4-5 PM",
+      "textbook": "Writing Fiction: A Guide to Narrative Craft",
+      "gradingPolicy": "Project-Based",
+      "sections": [
+        {
+          "sectionNumber": "001",
+          "professor": "Prof. Martinez",
+          "time": "Asynchronous"
+        }
+      ],
+      "creditHours": 3
     }
   ];
   

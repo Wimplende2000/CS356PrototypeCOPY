@@ -88,7 +88,7 @@ export default function SidebarFilters({
       </button>
       {departmentOpen && (
         <div className="filter-type">
-          {["CS", "MATH", "ENGL"].map((department) => (
+          {["Computer Science", "Mathematics", "English"].map((department) => (
             <label key={department} className="dropdown-items">
               <input
                 type="checkbox"
